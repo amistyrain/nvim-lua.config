@@ -23,7 +23,11 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
+    use {
+        "neovim/nvim-lspconfig",
+        event = "BufReadPre",
+        config = [[require("plugin-config.lsp")]]
+    }
     -- Plugins can have dependencies on other plugins
     use {
         'hrsh7th/nvim-compe',
@@ -33,24 +37,35 @@ require('packer').startup(function()
         requires = {
             {
                 'hrsh7th/vim-vsnip',
-                opt = true,
                 event = "InsertCharPre",
-                require = {"rafamadriz/friendly-snippets", opt = true}
-            }, {'hrsh7th/vim-vsnip-integ', opt = true, event = "InsertCharPre"}
+                config = [[require("plugin-config.vsnip")]]
+            }, {'hrsh7th/vim-vsnip-integ', event = "InsertCharPre"},
+            {"rafamadriz/friendly-snippets", event = "InsertCharPre"},
+            {
+                "tzachar/compe-tabnine",
+                run = "./install.sh",
+                event = "InsertCharPre"
+            }
         }
     }
-    use {"rafamadriz/friendly-snippets", event = "InsertCharPre"}
+
+    use {
+        "akinsho/nvim-bufferline.lua",
+        requires = {"kyazdani42/nvim-web-devicons"},
+        config = [[require("plugin-config.bufferline")]]
+    }
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = [[require("plugin-config.treesitter")]]
+        config = [[require("plugin-config.treesitter")]],
+        require = {{'nvim-treesitter/nvim-treesitter-textobjects', opt = true}}
     }
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
     use {
-        'hoob3rt/lualine.nvim',
-        config = [[require("plugin-config.lualine")]],
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        "glepnir/galaxyline.nvim",
+        event = "BufWinEnter",
+        config = [[require("plugin-config.galaxyline")]]
     }
 
     use {
@@ -64,19 +79,19 @@ require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    use "lukas-reineke/indent-blankline.nvim"
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = [[require("plugin-config.indent-blankline")]],
+        event = {"BufReadPre", "BufNewFile"}
+    }
 
     use {"ray-x/lsp_signature.nvim"}
 
-    use "glepnir/lspsaga.nvim"
-
-    use "glepnir/dashboard-nvim"
-
     use {
-        "neovim/nvim-lspconfig",
-        event = "BufReadPre",
-        config = [[require("plugin-config.lsp")]]
+        "glepnir/dashboard-nvim",
+        config = [[require("plugin-config.dashboard")]]
     }
+
     use {
         "kabouzeid/nvim-lspinstall",
         event = "VimEnter",
@@ -100,6 +115,11 @@ require('packer').startup(function()
     use {
         "terrortylor/nvim-comment",
         config = function() require('nvim_comment').setup() end
+    }
+    use {
+        "liuchengxu/vista.vim",
+        event = {"BufRead", "BufNewFile"},
+        config = [[require("plugin-config.vista")]]
     }
 
     use "tpope/vim-surround"

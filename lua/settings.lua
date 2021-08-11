@@ -39,3 +39,11 @@ b.expandtab = true -- use spaces instead of tabs
 b.shiftwidth = 4 -- shift 4 spaces when tab
 b.tabstop = 4 -- 1 tab == 4 spaces
 b.smartindent = true -- autoindent new lines
+--------------------------------------
+-- neovide
+--------------------------------------
+o.guifont = 'Hack Nerd Font Mono:h16'
+g.neovide_fullscreen = true
+g.neovide_no_idle = true
+
+--------------------------------------

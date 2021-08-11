@@ -34,7 +34,7 @@ require('telescope').setup {
     }
 }
 local defaults = {noremap = true, silent = true}
-vim.g.dashboard_default_executive = 'telescope'
+
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>",
                         defaults)
 vim.api.nvim_set_keymap("n", "<leader>ag", "<cmd>Telescope live_grep<cr>",
