@@ -3,9 +3,7 @@ require"bufferline".setup {
         modified_icon = '✥',
         mappings = true,
         buffer_close_icon = '',
-        always_show_bufferline = false
+        always_show_bufferline = false,
+        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
     }
 }
-
-vim.api.nvim_set_keymap("n", "]b", ":BufferLineCycleNext <CR>", {silent = true})
-vim.api.nvim_set_keymap("n", "[b", ":BufferLineCyclePrev <CR>", {silent = true})

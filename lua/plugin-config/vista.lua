@@ -4,7 +4,3 @@ vim.g.vista_echo_cursor_strategy = "scroll"
 vim.g.vista_vimwiki_executive = "markdown"
 vim.g.vista_highlight_whole_line = 1
 vim.g.vista_executive_for = {vimwiki = "markdown", pandoc = "markdown"}
-
--- Vista
-vim.api.nvim_set_keymap("n", "<Leader>v", ":<C-u>Vista!!<CR>",
-                        {silent = true, noremap = true})

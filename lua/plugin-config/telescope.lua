@@ -33,13 +33,3 @@ require('telescope').setup {
         buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
     }
 }
-local defaults = {noremap = true, silent = true}
-
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>",
-                        defaults)
-vim.api.nvim_set_keymap("n", "<leader>ag", "<cmd>Telescope live_grep<cr>",
-                        defaults)
-vim.api
-    .nvim_set_keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", defaults)
-vim.api.nvim_set_keymap("n", "<leader>h", "<cmd>Telescope help_tags<cr>",
-                        defaults)

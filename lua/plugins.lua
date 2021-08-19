@@ -22,61 +22,102 @@ vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
     use {
-        "neovim/nvim-lspconfig",
-        event = "BufReadPre",
-        config = [[require("plugin-config.lsp")]]
+      "wbthomason/packer.nvim"
     }
-    -- Plugins can have dependencies on other plugins
+   
     use {
-        'hrsh7th/nvim-compe',
-        opt = true,
-        event = "InsertEnter",
-        config = [[require("plugin-config.nvim-compe")]],
-        requires = {
-            {
-                'hrsh7th/vim-vsnip',
-                event = "InsertCharPre",
-                config = [[require("plugin-config.vsnip")]]
-            }, {'hrsh7th/vim-vsnip-integ', event = "InsertCharPre"},
-            {"rafamadriz/friendly-snippets", event = "InsertCharPre"},
-            {
-                "tzachar/compe-tabnine",
-                run = "./install.sh",
-                event = "InsertCharPre"
-            }
-        }
+      "kabouzeid/nvim-lspinstall",
+      event = "VimEnter",
     }
 
     use {
+      "neovim/nvim-lspconfig",
+      after = "nvim-lspinstall",
+      config = function()
+         require "plugin-config.lsp"
+      end,
+    }
+
+    use {
+      "hrsh7th/nvim-compe",
+      event = "InsertEnter",
+      config = function()
+         require "plugin-config.nvim-compe"
+      end,
+      wants = "LuaSnip",
+      requires = {
+         {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            event = "InsertCharPre",
+            config = function()
+               require "plugin-config.luasnip"
+            end,
+         },
+         {
+            "rafamadriz/friendly-snippets",
+            event = "InsertCharPre",
+         },
+      },
+   }
+    use {
+      "kyazdani42/nvim-web-devicons",
+    }
+    use {
         "akinsho/nvim-bufferline.lua",
-        requires = {"kyazdani42/nvim-web-devicons"},
-        config = [[require("plugin-config.bufferline")]]
+        after = "galaxyline.nvim",
+        config = [[require("plugin-config.bufferline")]],
+        setup = function()
+            require("plugin-map").bufferline()
+        end,
     }
 
     use {
         'nvim-treesitter/nvim-treesitter',
+        event = "BufRead",
         run = ':TSUpdate',
-        config = [[require("plugin-config.treesitter")]],
-        require = {{'nvim-treesitter/nvim-treesitter-textobjects', opt = true}}
+        config = [[require("plugin-config.treesitter")]]
     }
 
     use {
+      "onsails/lspkind-nvim",
+      event = "BufEnter",
+      config = function()
+         require('lspkind').init() 
+      end,
+   }
+
+    use {
         "glepnir/galaxyline.nvim",
-        event = "BufWinEnter",
+        after = "nvim-web-devicons",
         config = [[require("plugin-config.galaxyline")]]
     }
 
     use {
-        'nvim-telescope/telescope.nvim',
-        config = [[require("plugin-config.telescope")]],
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        "nvim-lua/plenary.nvim",
+        after = "nvim-bufferline.lua",
     }
+    use {
+        "nvim-lua/popup.nvim",
+        after = "plenary.nvim",
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        after = "plenary.nvim",
+        config = [[require("plugin-config.telescope")]],
+        setup = function()
+            require("plugin-map").telescope()
+        end,
+    }
+
     use {
         'kyazdani42/nvim-tree.lua',
         config = [[require("plugin-config.nvim-tree")]],
-        requires = 'kyazdani42/nvim-web-devicons'
+        requires = 'kyazdani42/nvim-web-devicons',
+        setup = function()
+            require("plugin-map").nvimtree()
+        end,
     }
 
     use {
@@ -85,25 +126,29 @@ require('packer').startup(function()
         event = {"BufReadPre", "BufNewFile"}
     }
 
-    use {"ray-x/lsp_signature.nvim"}
+    
+    use {
+        "ray-x/lsp_signature.nvim",
+        after = "nvim-lspconfig",
+        config = function()
+            require("plugin-config.lsp-sign")
+        end,
+    }
 
     use {
         "glepnir/dashboard-nvim",
-        config = [[require("plugin-config.dashboard")]]
+        config = [[require("plugin-config.dashboard")]],
     }
 
     use {
-        "kabouzeid/nvim-lspinstall",
-        event = "VimEnter",
+        "akinsho/nvim-toggleterm.lua",
+        event = "BufWinEnter",
         config = function()
-            local lspinstall = require "lspinstall"
-            lspinstall.setup()
-        end
-    }
-
-    use {
-        "voldikss/vim-floaterm",
-        config = [[require("plugin-config.vim-floaterm")]]
+           require "plugin-config.toggleterm"
+        end,
+        setup = function()
+            require("plugin-map").toggleterm()
+        end,
     }
 
     use {
@@ -114,15 +159,24 @@ require('packer').startup(function()
 
     use {
         "terrortylor/nvim-comment",
-        config = function() require('nvim_comment').setup() end
+        config = function() 
+            require('nvim_comment').setup()
+        end,
+        setup = function()
+            require("plugin-map").comment_nvim()
+        end
     }
+
     use {
         "liuchengxu/vista.vim",
         event = {"BufRead", "BufNewFile"},
-        config = [[require("plugin-config.vista")]]
+        config = [[require("plugin-config.vista")]],
+        setup = function()
+            require("plugin-map").vista()
+        end,
     }
 
-    use "tpope/vim-surround"
+    --use "tpope/vim-surround"
 
     use {
         'phaazon/hop.nvim',
@@ -133,7 +187,10 @@ require('packer').startup(function()
         end
     }
 
-    use {'fatih/molokai', config = [[vim.cmd('colorscheme molokai')]]}
+    use {
+        'fatih/molokai',
+        config = [[vim.cmd('colorscheme molokai')]]
+    }
 end)
 
 vim.cmd([[

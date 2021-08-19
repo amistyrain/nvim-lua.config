@@ -19,3 +19,7 @@ vim.g.dashboard_custom_header = {
     '    ⠀⠀⠀⠀⠀⠀⠉⠓⠶⣤⣄⣀⡀⠀⠀⠀⠀⠀⢀⣀⣠⡴⠖⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀  '
 }
 
+vim.g.dashboard_custom_footer = {
+   "   ",
+   "neovim",
+}

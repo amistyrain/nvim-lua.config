@@ -1,7 +1,12 @@
-require('nvim-autopairs').setup()
-if package.loaded["compe"] then
-    require("nvim-autopairs.completion.compe").setup {
-        map_cr = true, --  map <CR> on insert mode
-        map_complete = true -- it will auto insert `(` after select function or method item
-    }
+local present1, autopairs = pcall(require, "nvim-autopairs")
+local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.compe")
+
+if not (present1 or present2) then
+   return
 end
+
+autopairs.setup()
+autopairs_completion.setup {
+   map_cr = true,
+   map_complete = true, -- insert () func completion
+}
