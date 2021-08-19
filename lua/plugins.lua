@@ -176,7 +176,13 @@ require('packer').startup(function()
         end,
     }
 
-    --use "tpope/vim-surround"
+    use {
+        "blackCauldron7/surround.nvim",
+        event = {"BufRead", "BufNewFile"},
+        config = function()
+            require "surround".setup {}
+        end
+    }
 
     use {
         'phaazon/hop.nvim',
@@ -191,6 +197,19 @@ require('packer').startup(function()
         'fatih/molokai',
         config = [[vim.cmd('colorscheme molokai')]]
     }
+
+    use {
+      "Pocco81/TrueZen.nvim",
+      cmd = {
+         "TZAtaraxis",
+      },
+      config = function()
+         require "plugin-config.zenmode"
+      end,
+      setup = function()
+         require("plugin-map").truezen()
+      end,
+   }
 end)
 
 vim.cmd([[

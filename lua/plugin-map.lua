@@ -49,4 +49,8 @@ M.vista = function()
    map("n", "<Leader>v", ":<C-u>Vista!!<CR>",opt)
 end
 
+M.truezen = function()
+   map("n", "<Leader>zz", ":TZAtaraxis<CR>", opt)
+end
+
 return M
