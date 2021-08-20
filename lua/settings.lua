@@ -40,10 +40,10 @@ o.termguicolors = true -- enable 24-bit RGB colors
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
-b.expandtab = true -- use spaces instead of tabs
-b.shiftwidth = 4 -- shift 4 spaces when tab
-b.tabstop = 4 -- 1 tab == 4 spaces
-b.smartindent = true -- autoindent new lines
+o.expandtab = true -- use spaces instead of tabs
+o.shiftwidth = 4 -- shift 4 spaces when tab
+o.tabstop = 4 -- 1 tab == 4 spaces
+o.smartindent = true -- autoindent new lines
 --------------------------------------
 -- gui
 --------------------------------------

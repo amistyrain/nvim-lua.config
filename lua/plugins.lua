@@ -43,7 +43,6 @@ packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "VimEnter"
         }
 
         use {
