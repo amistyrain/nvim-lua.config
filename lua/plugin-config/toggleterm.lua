@@ -19,7 +19,7 @@ toggleterm.setup {
     -- insert_mappings = true, -- see 'open_mapping', not set on purpose
     -- whether or not the open mapping applies in insert mode
     persist_size = true,
-    direction = "vertical",
+    direction = "horizontal",
     close_on_exit = true, -- close the terminal window when the process exits
     -- This field is only relevant if direction is set to 'float'
     float_opts = {

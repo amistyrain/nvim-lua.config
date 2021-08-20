@@ -71,3 +71,5 @@ lspSymbol("Error", "")
 lspSymbol("Warning", "")
 lspSymbol("Information", "")
 lspSymbol("Hint", "")
+
+-- vim.lsp.set_log_level("debug")

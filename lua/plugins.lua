@@ -43,6 +43,7 @@ packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
+            event = "BufReadPre"
         }
 
         use {
@@ -127,6 +128,7 @@ packer.startup(
 
         use {
             "kyazdani42/nvim-tree.lua",
+            event = "VimEnter",
             config = [[require("plugin-config.nvim-tree")]],
             requires = "kyazdani42/nvim-web-devicons",
             setup = function()
@@ -172,6 +174,7 @@ packer.startup(
 
         use {
             "terrortylor/nvim-comment",
+            event = {"BufReadPre", "BufNewFile"},
             config = function()
                 require("nvim_comment").setup()
             end,
@@ -200,6 +203,7 @@ packer.startup(
         use {
             "phaazon/hop.nvim",
             as = "hop",
+            event = "BufReadPre",
             config = function()
                 -- you can configure Hop the way you like here; see :h hop-config
                 require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
@@ -208,6 +212,7 @@ packer.startup(
 
         use {
             "fatih/molokai",
+            event = "VimEnter",
             config = [[vim.cmd('colorscheme molokai')]]
         }
 
@@ -216,6 +221,7 @@ packer.startup(
             cmd = {
                 "TZAtaraxis"
             },
+            event = "BufRead",
             config = function()
                 require "plugin-config.zenmode"
             end,

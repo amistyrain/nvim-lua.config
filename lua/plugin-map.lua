@@ -13,7 +13,7 @@ local opt = {noremap = true, silent = true}
 
 M.toggleterm = function()
     -- Open
-    map("n", "<leader>w", ":lua termW:toggle() <CR>", opt)
+    map("n", "<leader>w", ":lua termH:toggle() <CR>", opt)
     -- Hide
     map("t", "JJ", "<C-\\><C-n> :ToggleTerm <CR>", opt)
 end
@@ -24,7 +24,7 @@ M.comment_nvim = function()
 end
 
 M.nvimtree = function()
-    map("n", "<leader>g", ":NvimTreeToggle<CR>", opt)
+    map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 end
 
 M.telescope = function()

@@ -10,7 +10,6 @@ local b = vim.bo -- buffer-scoped options
 local w = vim.wo -- windows-scoped options
 local opt = vim.opt
 
--- CACHE_PATH = fn.stdpath "cache"
 o.mouse = "a" -- enable mouse support
 o.clipboard = "unnamedplus" -- copy/paste to system clipboard
 b.swapfile = false -- don't use swapfile
@@ -28,7 +27,6 @@ o.undofile = true
 o.cmdheight = 1
 opt.signcolumn = "yes"
 opt.fillchars = {eob = " "}
--- o.undodir = CACHE_PATH .. "undo"
 o.encoding = "utf-8"
 o.scrolloff = 8
 o.guicursor =
