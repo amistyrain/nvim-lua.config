@@ -1,9 +1,9 @@
-require"bufferline".setup {
+require "bufferline".setup {
     options = {
-        modified_icon = '✥',
+        modified_icon = "✥",
         mappings = true,
-        buffer_close_icon = '',
+        buffer_close_icon = "",
         always_show_bufferline = false,
-        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+        offsets = {{filetype = "NvimTree", text = "", padding = 1}}
     }
 }

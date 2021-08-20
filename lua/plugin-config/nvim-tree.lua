@@ -4,4 +4,4 @@ vim.g.nvim_tree_show_icons = {
     files = 1,
     folder_arrows = 1
 }
-vim.g.nvim_tree_ignore = {'.git', '.idea', '.cache', '.DS_Store', '.vscode'}
+vim.g.nvim_tree_ignore = {".git", ".idea", ".cache", ".DS_Store", ".vscode"}

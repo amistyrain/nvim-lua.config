@@ -1,9 +1,16 @@
 local status_ok1, gl = pcall(require, "galaxyline")
 local status_ok2, condition = pcall(require, "galaxyline.condition")
-if not (status_ok1 or status_ok2) then return end
+if not (status_ok1 or status_ok2) then
+    return
+end
 
 gl.short_line_list = {
-    "NvimTree", "packer", "undotree", "vista", "Floaterm", "vista_markdown"
+    "NvimTree",
+    "packer",
+    "undotree",
+    "vista",
+    "Floaterm",
+    "vista_markdown"
 }
 
 local colors = {
@@ -25,27 +32,34 @@ local colors = {
     red = "#D16969",
     error_red = "#F44747",
     info_yellow = "#FFCC66",
-    line_bg = '#353644'
+    line_bg = "#353644"
 }
 
 local function all(...)
     local args = {...}
     return function()
-        for _, fn in ipairs(args) do if not fn() then return false end end
+        for _, fn in ipairs(args) do
+            if not fn() then
+                return false
+            end
+        end
         return true
     end
 end
 
-local function checkwidth() return (vim.fn.winwidth(0) / 2) > 40 end
+local function checkwidth()
+    return (vim.fn.winwidth(0) / 2) > 40
+end
 
 local buffer_not_empty = function()
-    if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
+    if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
+        return true
+    end
     return false
 end
 
 local function find_git_root()
-    return
-        require('galaxyline/provider_vcs').get_git_dir(vim.fn.expand('%:p:h'))
+    return require("galaxyline/provider_vcs").get_git_dir(vim.fn.expand("%:p:h"))
 end
 
 local gls = gl.section
@@ -63,7 +77,9 @@ local mode_color = function()
 
     local color = mode_colors[vim.fn.mode()]
 
-    if color == nil then color = colors.red end
+    if color == nil then
+        color = colors.red
+    end
 
     return color
 end
@@ -80,10 +96,11 @@ gls.left[1] = {
                 v = "VISUAL",
                 R = "REPLACE"
             }
-            vim.api.nvim_command("hi GalaxyViMode gui=bold guibg=" ..
-                                     mode_color())
+            vim.api.nvim_command("hi GalaxyViMode gui=bold guibg=" .. mode_color())
             local alias_mode = alias[vim.fn.mode()]
-            if alias_mode == nil then alias_mode = vim.fn.mode() end
+            if alias_mode == nil then
+                alias_mode = vim.fn.mode()
+            end
             return "  " .. alias_mode .. " "
         end,
         separator = "",
@@ -93,7 +110,9 @@ gls.left[1] = {
 
 gls.left[2] = {
     GitIcon = {
-        provider = function() return "   " end,
+        provider = function()
+            return "   "
+        end,
         condition = condition.check_git_workspace,
         separator = "",
         separator_highlight = {"NONE", colors.bg},
@@ -113,10 +132,10 @@ gls.left[3] = {
 
 gls.left[4] = {
     FileIcon = {
-        provider = 'FileIcon',
+        provider = "FileIcon",
         condition = buffer_not_empty,
         highlight = {
-            require('galaxyline.provider_fileinfo').get_file_icon_color,
+            require("galaxyline.provider_fileinfo").get_file_icon_color,
             colors.line_bg
         }
     }
@@ -124,35 +143,35 @@ gls.left[4] = {
 
 gls.left[5] = {
     FileName = {
-        provider = {'FileName', 'FileSize'},
+        provider = {"FileName", "FileSize"},
         condition = buffer_not_empty,
-        highlight = {colors.fg, colors.line_bg, 'bold'}
+        highlight = {colors.fg, colors.line_bg, "bold"}
     }
 }
 
 gls.left[6] = {
     DiffAdd = {
-        provider = 'DiffAdd',
+        provider = "DiffAdd",
         condition = all(checkwidth, find_git_root),
-        icon = ' ',
+        icon = " ",
         highlight = {colors.green, colors.bg}
     }
 }
 
 gls.left[7] = {
     DiffModified = {
-        provider = 'DiffModified',
+        provider = "DiffModified",
         condition = checkwidth,
-        icon = ' ',
+        icon = " ",
         highlight = {colors.orange, colors.bg}
     }
 }
 
 gls.left[8] = {
     DiffRemove = {
-        provider = 'DiffRemove',
+        provider = "DiffRemove",
         condition = checkwidth,
-        icon = ' ',
+        icon = " ",
         highlight = {colors.red, colors.bg}
     }
 }
@@ -162,7 +181,9 @@ gls.mid[5] = {
         provider = "GetLspClient",
         condition = function()
             local tbl = {["dashboard"] = true, [" "] = true}
-            if tbl[vim.bo.filetype] then return false end
+            if tbl[vim.bo.filetype] then
+                return false
+            end
             return true
         end,
         icon = " LSP: ",

@@ -11,13 +11,13 @@ local w = vim.wo -- windows-scoped options
 local opt = vim.opt
 
 -- CACHE_PATH = fn.stdpath "cache"
-o.mouse = 'a' -- enable mouse support
-o.clipboard = 'unnamedplus' -- copy/paste to system clipboard
+o.mouse = "a" -- enable mouse support
+o.clipboard = "unnamedplus" -- copy/paste to system clipboard
 b.swapfile = false -- don't use swapfile
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
-o.syntax = 'enable' -- enable syntax highlighting
+o.syntax = "enable" -- enable syntax highlighting
 w.number = true -- show line number
 w.numberwidth = 2
 o.showmatch = true -- highlight matching parenthesis
@@ -27,9 +27,9 @@ o.hlsearch = true
 o.undofile = true
 o.cmdheight = 1
 opt.signcolumn = "yes"
-opt.fillchars = { eob = " " }
+opt.fillchars = {eob = " "}
 -- o.undodir = CACHE_PATH .. "undo"
-o.encoding = 'utf-8'
+o.encoding = "utf-8"
 o.scrolloff = 8
 o.guicursor =
     "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
@@ -47,32 +47,31 @@ b.smartindent = true -- autoindent new lines
 --------------------------------------
 -- gui
 --------------------------------------
-o.guifont = 'Hack Nerd Font Mono:h17'
+o.guifont = "Hack Nerd Font Mono:h17"
 --------------------------------------
-
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
-   "netrw",
-   "netrwPlugin",
-   "netrwSettings",
-   "netrwFileHandlers",
-   "gzip",
-   "zip",
-   "zipPlugin",
-   "tar",
-   "tarPlugin",
-   "getscript",
-   "getscriptPlugin",
-   "vimball",
-   "vimballPlugin",
-   "2html_plugin",
-   "logipat",
-   "rrhelper",
-   "spellfile_plugin",
-   "matchit",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-   g["loaded_" .. plugin] = 1
+    g["loaded_" .. plugin] = 1
 end
