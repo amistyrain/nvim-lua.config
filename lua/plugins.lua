@@ -20,7 +20,23 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function()
+local packer = require('packer')
+
+packer.init {
+   display = {
+      open_fn = function()
+         return require("packer.util").float { border = "single" }
+      end,
+      prompt_border = "single",
+   },
+   git = {
+      clone_timeout = 600,
+   },
+   auto_clean = true,
+   compile_on_sync = true,
+}
+
+packer.startup(function()
     -- Packer can manage itself
     use {
       "wbthomason/packer.nvim"
@@ -211,10 +227,3 @@ require('packer').startup(function()
       end,
    }
 end)
-
-vim.cmd([[
-  augroup packer_auto_compile
-    autocmd!
-    autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
-  augroup END
-]])
