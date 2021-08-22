@@ -98,6 +98,17 @@ packer.startup(
         }
 
         use {
+            "folke/trouble.nvim",
+            event = "BufRead",
+            config = function()
+                require "plugin-config.trouble"
+            end,
+            setup = function()
+                require("plugin-map").trouble()
+            end
+        }
+
+        use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             run = ":TSUpdate",
