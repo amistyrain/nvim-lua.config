@@ -112,7 +112,9 @@ packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             run = ":TSUpdate",
-            config = [[require("plugin-config.treesitter")]]
+            config = function()
+                require "plugin-config.treesitter"
+            end
         }
 
         use {
@@ -126,7 +128,9 @@ packer.startup(
         use {
             "glepnir/galaxyline.nvim",
             after = "nvim-web-devicons",
-            config = [[require("plugin-config.galaxyline")]]
+            config = function()
+                require "plugin-config.galaxyline"
+            end
         }
 
         use {
@@ -141,7 +145,9 @@ packer.startup(
         use {
             "nvim-telescope/telescope.nvim",
             after = "plenary.nvim",
-            config = [[require("plugin-config.telescope")]],
+            config = function()
+                require "plugin-config.telescope"
+            end,
             setup = function()
                 require("plugin-map").telescope()
             end
@@ -150,7 +156,9 @@ packer.startup(
         use {
             "kyazdani42/nvim-tree.lua",
             event = "VimEnter",
-            config = [[require("plugin-config.nvim-tree")]],
+            config = function()
+                require "plugin-config.nvim-tree"
+            end,
             requires = "kyazdani42/nvim-web-devicons",
             setup = function()
                 require("plugin-map").nvimtree()
@@ -159,7 +167,9 @@ packer.startup(
 
         use {
             "lukas-reineke/indent-blankline.nvim",
-            config = [[require("plugin-config.indent-blankline")]],
+            config = function()
+                require "plugin-config.indent-blankline"
+            end,
             event = {"BufReadPre", "BufNewFile"}
         }
 
@@ -173,9 +183,19 @@ packer.startup(
 
         use {
             "glepnir/dashboard-nvim",
-            config = [[require("plugin-config.dashboard")]]
+            event = "BufWinEnter",
+            config = function()
+                require "plugin-config.dashboard"
+            end
         }
 
+        use {
+            "folke/which-key.nvim",
+            event = "BufWinEnter",
+            config = function()
+                require("which-key").setup {}
+            end
+        }
         use {
             "akinsho/nvim-toggleterm.lua",
             event = "BufWinEnter",
@@ -190,7 +210,9 @@ packer.startup(
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
-            config = [[require("plugin-config.autopairs")]]
+            config = function()
+                require "plugin-config.autopairs"
+            end
         }
 
         use {
@@ -207,7 +229,9 @@ packer.startup(
         use {
             "liuchengxu/vista.vim",
             event = {"BufRead", "BufNewFile"},
-            config = [[require("plugin-config.vista")]],
+            config = function()
+                require "plugin-config.vista"
+            end,
             setup = function()
                 require("plugin-map").vista()
             end
