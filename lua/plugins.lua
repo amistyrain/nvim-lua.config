@@ -80,7 +80,7 @@ packer.startup(
             "kyazdani42/nvim-web-devicons"
         }
         use {
-            "akinsho/nvim-bufferline.lua",
+            "akinsho/bufferline.nvim",
             after = "galaxyline.nvim",
             config = [[require("plugin-config.bufferline")]],
             setup = function()
@@ -111,8 +111,9 @@ packer.startup(
 
         use {
             "nvim-lua/plenary.nvim",
-            after = "nvim-bufferline.lua"
+            after = "bufferline.nvim"
         }
+
         use {
             "nvim-lua/popup.nvim",
             after = "plenary.nvim"
