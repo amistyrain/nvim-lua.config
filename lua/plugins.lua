@@ -89,6 +89,15 @@ packer.startup(
         }
 
         use {
+            "lewis6991/gitsigns.nvim",
+            after = "plenary.nvim",
+            event = "BufRead",
+            config = function()
+                require "plugin-config.gitsigns"
+            end
+        }
+
+        use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             run = ":TSUpdate",
