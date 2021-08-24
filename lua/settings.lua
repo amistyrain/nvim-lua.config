@@ -47,7 +47,7 @@ o.smartindent = true -- autoindent new lines
 --------------------------------------
 o.guifont = "Hack Nerd Font Mono:h17"
 --------------------------------------
-
+o.completeopt = "menuone,noselect"
 -- disable builtin vim plugins
 local disabled_built_ins = {
     "netrw",

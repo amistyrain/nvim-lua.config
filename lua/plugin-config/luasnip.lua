@@ -64,7 +64,8 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
 
 luasnip.config.set_config {
-    history = true,
+    history = false,
     updateevents = "TextChanged,TextChangedI"
 }
+
 require("luasnip/loaders/from_vscode").load()
