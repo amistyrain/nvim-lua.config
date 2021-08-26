@@ -9,6 +9,7 @@ local o = vim.o -- global options
 local b = vim.bo -- buffer-scoped options
 local w = vim.wo -- windows-scoped options
 local opt = vim.opt
+local CACHE_PATH = vim.fn.stdpath "cache"
 
 o.mouse = "a" -- enable mouse support
 o.clipboard = "unnamedplus" -- copy/paste to system clipboard
@@ -24,6 +25,7 @@ o.ignorecase = true -- ignore case letters when search
 o.smartcase = true -- ignore lowercase for the whole pattern
 o.hlsearch = true
 o.undofile = true
+o.undodir = CACHE_PATH .. "/undo" -- set an undo directory
 o.cmdheight = 1
 opt.signcolumn = "yes"
 opt.fillchars = {eob = " "}
