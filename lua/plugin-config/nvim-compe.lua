@@ -19,6 +19,7 @@ compe.setup {
     source = {
         buffer = {kind = "﬘", true},
         luasnip = {kind = "﬌", true},
+        vsnip = {kind = "﬌", true},
         nvim_lsp = true,
         nvim_lua = true
     }

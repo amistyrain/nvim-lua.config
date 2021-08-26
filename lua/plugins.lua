@@ -60,14 +60,14 @@ packer.startup(
             config = function()
                 require "plugin-config.nvim-compe"
             end,
-            wants = "LuaSnip",
+            wants = "vim-vsnip",
             requires = {
                 {
-                    "L3MON4D3/LuaSnip",
+                    "hrsh7th/vim-vsnip",
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require "plugin-config.luasnip"
+                        require "plugin-config.vim-vsnip"
                     end
                 },
                 {
@@ -76,9 +76,11 @@ packer.startup(
                 }
             }
         }
+
         use {
             "kyazdani42/nvim-web-devicons"
         }
+
         use {
             "akinsho/bufferline.nvim",
             after = "galaxyline.nvim",
@@ -119,7 +121,7 @@ packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufEnter",
+            event = "InsertEnter",
             config = function()
                 require("lspkind").init()
             end
