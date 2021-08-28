@@ -79,7 +79,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     {
         virtual_text = {
             prefix = "",
-            spacing = 0
+            spacing = 4
         },
         signs = true,
         underline = true,

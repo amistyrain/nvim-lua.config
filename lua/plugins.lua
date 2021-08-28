@@ -161,7 +161,6 @@ packer.startup(
             config = function()
                 require "plugin-config.nvim-tree"
             end,
-            requires = "kyazdani42/nvim-web-devicons",
             setup = function()
                 require("plugin-map").nvimtree()
             end
@@ -200,6 +199,7 @@ packer.startup(
         }
         use {
             "akinsho/nvim-toggleterm.lua",
+            disable = true,
             event = "BufWinEnter",
             config = function()
                 require "plugin-config.toggleterm"
@@ -251,6 +251,9 @@ packer.startup(
             "phaazon/hop.nvim",
             as = "hop",
             event = "BufReadPre",
+            setup = function()
+                require("plugin-map").hop()
+            end,
             config = function()
                 -- you can configure Hop the way you like here; see :h hop-config
                 require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
