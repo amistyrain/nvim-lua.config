@@ -61,4 +61,9 @@ M.trouble = function()
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", opt)
 end
 
+M.hop = function()
+    map("n", "s", ":HopChar2<CR>", {silent = true})
+    map("n", "S", ":HopWord<CR>", {silent = true})
+end
+
 return M
