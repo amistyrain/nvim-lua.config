@@ -11,13 +11,6 @@ end
 
 local opt = {noremap = true, silent = true}
 
-M.toggleterm = function()
-    -- Open
-    map("n", "<leader>w", ":lua termH:toggle() <CR>", opt)
-    -- Hide
-    map("t", "JJ", "<C-\\><C-n> :ToggleTerm <CR>", opt)
-end
-
 M.comment_nvim = function()
     map("n", "gc", ":CommentToggle<CR>", opt)
     map("v", "gcc", ":CommentToggle<CR>", opt)

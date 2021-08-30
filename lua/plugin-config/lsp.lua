@@ -39,7 +39,21 @@ local function on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = {"markdown", "plaintext"}
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = {valueSet = {1}}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits"
+    }
+}
 
 -- lspInstall + lspconfig stuff
 local function setup_servers()
@@ -84,6 +98,21 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         signs = true,
         underline = true,
         update_in_insert = false -- update diagnostics insert mode
+    }
+)
+
+vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(
+    vim.lsp.handlers.hover,
+    {
+        border = "single"
+    }
+)
+vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    {
+        border = "single"
     }
 )
 

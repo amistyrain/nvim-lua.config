@@ -1,6 +1,6 @@
 local fn = vim.fn
 
-local packer_install_dir = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_install_dir = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 local plug_url_format = ""
 
@@ -38,7 +38,8 @@ packer.startup(
     function()
         -- Packer can manage itself
         use {
-            "wbthomason/packer.nvim"
+            "wbthomason/packer.nvim",
+            event = "VimEnter"
         }
 
         use {
@@ -55,26 +56,45 @@ packer.startup(
         }
 
         use {
-            "hrsh7th/nvim-compe",
+            "hrsh7th/nvim-cmp",
             event = "InsertEnter",
             config = function()
-                require "plugin-config.nvim-compe"
-            end,
-            wants = "vim-vsnip",
-            requires = {
-                {
-                    "hrsh7th/vim-vsnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require "plugin-config.vim-vsnip"
-                    end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
+                require "plugin-config.cmp"
+            end
+        }
+
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
+                require "plugin-config.luasnip"
+            end
+        }
+
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            after = "LuaSnip"
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lua",
+            after = "cmp_luasnip"
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            after = "cmp-nvim-lua"
+        }
+
+        use {
+            "hrsh7th/cmp-buffer",
+            after = "cmp-nvim-lsp"
+        }
+
+        use {
+            "rafamadriz/friendly-snippets",
+            after = "cmp-buffer"
         }
 
         use {
@@ -120,14 +140,6 @@ packer.startup(
         }
 
         use {
-            "onsails/lspkind-nvim",
-            event = "InsertEnter",
-            config = function()
-                require("lspkind").init()
-            end
-        }
-
-        use {
             "glepnir/galaxyline.nvim",
             after = "nvim-web-devicons",
             config = function()
@@ -144,6 +156,7 @@ packer.startup(
             "nvim-lua/popup.nvim",
             after = "plenary.nvim"
         }
+
         use {
             "nvim-telescope/telescope.nvim",
             after = "plenary.nvim",
@@ -197,21 +210,10 @@ packer.startup(
                 require("which-key").setup {}
             end
         }
-        use {
-            "akinsho/nvim-toggleterm.lua",
-            disable = true,
-            event = "BufWinEnter",
-            config = function()
-                require "plugin-config.toggleterm"
-            end,
-            setup = function()
-                require("plugin-map").toggleterm()
-            end
-        }
 
         use {
             "windwp/nvim-autopairs",
-            after = "nvim-compe",
+            after = "nvim-cmp",
             config = function()
                 require "plugin-config.autopairs"
             end
