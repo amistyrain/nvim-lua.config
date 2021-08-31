@@ -12,7 +12,7 @@ cmp.setup {
         end
     },
     completion = {
-        completeopt = "menu,menuone,noinsert"
+        completeopt = "menuone,noinsert"
     },
     formatting = {
         format = function(entry, vim_item)
@@ -23,9 +23,9 @@ cmp.setup {
             vim_item.menu =
                 ({
                 nvim_lsp = "[LSP]",
+                luasnip = "[LuaSnip]",
                 nvim_lua = "[Lua]",
-                buffer = "[BUF]",
-                luasnip = "[LuaSnip]"
+                buffer = "[BUF]"
             })[entry.source.name]
 
             return vim_item

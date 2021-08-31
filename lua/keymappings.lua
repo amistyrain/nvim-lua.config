@@ -4,7 +4,7 @@ local defaults = {noremap = true, silent = true}
 
 map("i", "jj", "<Esc>", {noremap = true})
 map("n", "<Esc>", ":nohl<CR>", defaults)
--- map("n", "<M-s>", ":w <CR>", defaults)
+map("n", "<space><space>", ":w <CR>", defaults)
 -- map("n", "<M-c>", ":%y+<CR>", defaults)
 
 -- Packer commands till because we are not loading it at startup
