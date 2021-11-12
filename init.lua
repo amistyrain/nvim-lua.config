@@ -1,8 +1,7 @@
-vim.g.mapleader = ',' -- change leader to a command
+vim.g.mapleader = "," -- change leader to a command
 
-require('settings')
+require("settings")
 
-require('keymappings')
+require("keymappings")
 
-require('utils')
-
+require("utils")
