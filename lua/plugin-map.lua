@@ -28,7 +28,7 @@ M.nvimtree = function()
 end
 
 M.telescope = function()
-    map("n", "<leader>fw", ":Telescope live_grep<CR>", opt)
+    map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
     map("n", "<leader>ff", ":Telescope find_files <CR>", opt)
     map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
     map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
