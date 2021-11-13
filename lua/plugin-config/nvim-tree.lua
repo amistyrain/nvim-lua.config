@@ -6,7 +6,6 @@ vim.g.nvim_tree_show_icons = {
 }
 
 vim.g.nvim_tree_ignore = {".git", ".idea", ".cache", ".DS_Store", ".vscode"}
-
 -- following options are the default
 require "nvim-tree".setup {
     -- disables netrw completely

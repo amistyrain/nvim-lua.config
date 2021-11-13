@@ -11,6 +11,8 @@ local w = vim.wo -- windows-scoped options
 local opt = vim.opt
 local CACHE_PATH = vim.fn.stdpath "cache"
 
+g.mapleader = "," -- change leader to a command
+
 o.mouse = "a" -- enable mouse support
 o.clipboard = "unnamedplus" -- copy/paste to system clipboard
 b.swapfile = false -- don't use swapfile
