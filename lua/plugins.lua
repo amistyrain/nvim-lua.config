@@ -42,52 +42,71 @@ packer.startup(
         }
 
         use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufReadPre"
-        }
-
-        use {
             "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
+            event = "BufReadPre",
             config = function()
                 require "plugin-config.lsp"
             end
         }
 
         use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
+            "williamboman/nvim-lsp-installer",
+            after = "nvim-lspconfig",
             config = function()
-                require "plugin-config.nvim-compe"
-            end,
-            wants = "vim-vsnip",
-            requires = {
-                {
-                    "hrsh7th/vim-vsnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require "plugin-config.vim-vsnip"
-                    end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
+                require "plugin-config.lsp-servers"
+            end
         }
+
+        use {
+            "rafamadriz/friendly-snippets",
+            event = "InsertEnter"
+        }
+
+        use {
+            "hrsh7th/nvim-cmp",
+            after = "friendly-snippets",
+            config = function()
+                require "plugin-config.nvim-cmp"
+            end
+        }
+
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
+                require "plugin-config.luasnip"
+            end
+        }
+
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            after = "LuaSnip"
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lua",
+            after = "cmp_luasnip"
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            after = "cmp-nvim-lua"
+        }
+
+        use {
+            "hrsh7th/cmp-buffer",
+            after = "cmp-nvim-lsp"
+        }
+
+        use {
+            "hrsh7th/cmp-path",
+            after = "cmp-buffer"
+        }
+        --------------------------------------
 
         use {
             "kyazdani42/nvim-web-devicons"
-        }
-
-        use {
-            "akinsho/bufferline.nvim",
-            after = "galaxyline.nvim",
-            config = [[require("plugin-config.bufferline")]],
-            setup = function()
-                require("plugin-map").bufferline()
-            end
         }
 
         use {
@@ -112,7 +131,6 @@ packer.startup(
 
         use {
             "nvim-treesitter/nvim-treesitter",
-            event = "BufRead",
             run = ":TSUpdate",
             config = function()
                 require "plugin-config.treesitter"
@@ -128,25 +146,32 @@ packer.startup(
         }
 
         use {
-            "glepnir/galaxyline.nvim",
+            "SmiteshP/nvim-gps",
             after = "nvim-web-devicons",
             config = function()
-                require "plugin-config.galaxyline"
+                require "plugin-config.nvim-gps"
             end
         }
 
         use {
-            "nvim-lua/plenary.nvim",
-            after = "bufferline.nvim"
+            "famiu/feline.nvim",
+            after = "nvim-gps",
+            config = function()
+                require "plugin-config.feline"
+            end
+        }
+
+        use {
+            "nvim-lua/plenary.nvim"
         }
 
         use {
             "nvim-lua/popup.nvim",
             after = "plenary.nvim"
         }
+
         use {
             "nvim-telescope/telescope.nvim",
-            after = "plenary.nvim",
             config = function()
                 require "plugin-config.telescope"
             end,
@@ -157,7 +182,7 @@ packer.startup(
 
         use {
             "kyazdani42/nvim-tree.lua",
-            event = "VimEnter",
+            cmd = {"NvimTreeToggle", "NvimTreeFocus"},
             config = function()
                 require "plugin-config.nvim-tree"
             end,
@@ -197,21 +222,10 @@ packer.startup(
                 require("which-key").setup {}
             end
         }
-        use {
-            "akinsho/nvim-toggleterm.lua",
-            disable = true,
-            event = "BufWinEnter",
-            config = function()
-                require "plugin-config.toggleterm"
-            end,
-            setup = function()
-                require("plugin-map").toggleterm()
-            end
-        }
 
         use {
             "windwp/nvim-autopairs",
-            after = "nvim-compe",
+            after = "nvim-cmp",
             config = function()
                 require "plugin-config.autopairs"
             end
@@ -230,6 +244,7 @@ packer.startup(
 
         use {
             "liuchengxu/vista.vim",
+            disable = true,
             event = {"BufRead", "BufNewFile"},
             config = function()
                 require "plugin-config.vista"
@@ -264,20 +279,6 @@ packer.startup(
             "fatih/molokai",
             event = "VimEnter",
             config = [[vim.cmd('colorscheme molokai')]]
-        }
-
-        use {
-            "Pocco81/TrueZen.nvim",
-            cmd = {
-                "TZAtaraxis"
-            },
-            event = "BufRead",
-            config = function()
-                require "plugin-config.zenmode"
-            end,
-            setup = function()
-                require("plugin-map").truezen()
-            end
         }
     end
 )
