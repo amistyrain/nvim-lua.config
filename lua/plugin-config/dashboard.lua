@@ -39,7 +39,7 @@ vim.g.dashboard_custom_header = {
 
 vim.g.dashboard_custom_footer = {
     "   ",
-    "neovim"
+    "Amistyrain"
 }
 
 vim.g.dashboard_custom_section = {

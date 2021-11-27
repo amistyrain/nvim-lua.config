@@ -11,13 +11,6 @@ end
 
 local opt = {noremap = true, silent = true}
 
-M.toggleterm = function()
-    -- Open
-    map("n", "<leader>w", ":lua termH:toggle() <CR>", opt)
-    -- Hide
-    map("t", "JJ", "<C-\\><C-n> :ToggleTerm <CR>", opt)
-end
-
 M.comment_nvim = function()
     map("n", "gc", ":CommentToggle<CR>", opt)
     map("v", "gcc", ":CommentToggle<CR>", opt)
@@ -38,18 +31,8 @@ M.telescope = function()
     map("n", "<leader>gc", ":Telescope git_commits <CR>", opt)
 end
 
-M.bufferline = function()
-    -- move between tabs
-    map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
-    map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
-end
-
 M.vista = function()
     map("n", "<Leader>v", ":<C-u>Vista!!<CR>", opt)
-end
-
-M.truezen = function()
-    map("n", "<Leader>zz", ":TZAtaraxis<CR>", opt)
 end
 
 M.trouble = function()
