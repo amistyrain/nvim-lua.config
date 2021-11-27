@@ -304,19 +304,5 @@ packer.startup(
             event = "VimEnter",
             config = [[vim.cmd('colorscheme molokai')]]
         }
-
-        use {
-            "Pocco81/TrueZen.nvim",
-            cmd = {
-                "TZAtaraxis"
-            },
-            event = "BufRead",
-            config = function()
-                require "plugin-config.zenmode"
-            end,
-            setup = function()
-                require("plugin-map").truezen()
-            end
-        }
     end
 )
