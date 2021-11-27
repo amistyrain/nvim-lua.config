@@ -110,16 +110,6 @@ packer.startup(
         }
 
         use {
-            "akinsho/bufferline.nvim",
-            config = function()
-                require "plugin-config.bufferline"
-            end,
-            setup = function()
-                require("plugin-map").bufferline()
-            end
-        }
-
-        use {
             "lewis6991/gitsigns.nvim",
             after = "plenary.nvim",
             event = "BufRead",
@@ -172,8 +162,7 @@ packer.startup(
         }
 
         use {
-            "nvim-lua/plenary.nvim",
-            after = "bufferline.nvim"
+            "nvim-lua/plenary.nvim"
         }
 
         use {
@@ -183,7 +172,6 @@ packer.startup(
 
         use {
             "nvim-telescope/telescope.nvim",
-            after = "plenary.nvim",
             config = function()
                 require "plugin-config.telescope"
             end,
@@ -232,18 +220,6 @@ packer.startup(
             event = "BufWinEnter",
             config = function()
                 require("which-key").setup {}
-            end
-        }
-
-        use {
-            "akinsho/nvim-toggleterm.lua",
-            disable = true,
-            event = "BufWinEnter",
-            config = function()
-                require "plugin-config.toggleterm"
-            end,
-            setup = function()
-                require("plugin-map").toggleterm()
             end
         }
 
