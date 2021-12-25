@@ -4,7 +4,7 @@ if not present then
 end
 
 luasnip.config.set_config {
-    history = true,
+    history = false,
     updateevents = "TextChanged,TextChangedI"
 }
 

@@ -200,7 +200,7 @@ components.active[2][4] = {
 components.active[2][5] = {
     provider = "diagnostic_errors",
     enabled = function()
-        return lsp.diagnostics_exist("Error")
+        return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
     end,
     hl = {
         fg = "red",
@@ -211,7 +211,7 @@ components.active[2][5] = {
 components.active[2][6] = {
     provider = "diagnostic_warnings",
     enabled = function()
-        return lsp.diagnostics_exist("Warning")
+        return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
     end,
     hl = {
         fg = "yellow",
@@ -222,7 +222,7 @@ components.active[2][6] = {
 components.active[2][7] = {
     provider = "diagnostic_hints",
     enabled = function()
-        return lsp.diagnostics_exist("Hint")
+        return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
     end,
     hl = {
         fg = "cyan",
@@ -233,7 +233,7 @@ components.active[2][7] = {
 components.active[2][8] = {
     provider = "diagnostic_info",
     enabled = function()
-        return lsp.diagnostics_exist("Information")
+        return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
     end,
     hl = {
         fg = "skyblue",
@@ -406,7 +406,7 @@ components.inactive[1][1] = {
 
 require("feline").setup(
     {
-        colors = colors,
+        theme = colors,
         default_bg = bg,
         default_fg = fg,
         vi_mode_colors = vi_mode_colors,

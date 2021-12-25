@@ -280,5 +280,10 @@ packer.startup(
             event = "VimEnter",
             config = [[vim.cmd('colorscheme molokai')]]
         }
+
+        use {
+            "fatih/vim-go",
+            event = "VimEnter"
+        }
     end
 )

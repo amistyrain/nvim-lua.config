@@ -4,15 +4,11 @@ if not present1 then
     return
 end
 
-function lspSymbol(name, icon)
-    vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+local signs = {Error = "", Warn = "", Hint = "", Info = ""}
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
-
-lspSymbol("Error", "")
-lspSymbol("Warning", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-
 -- vim.lsp.set_log_level("debug")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
