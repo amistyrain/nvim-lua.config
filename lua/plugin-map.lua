@@ -11,11 +11,6 @@ end
 
 local opt = {noremap = true, silent = true}
 
-M.comment_nvim = function()
-    map("n", "gc", ":CommentToggle<CR>", opt)
-    map("v", "gcc", ":CommentToggle<CR>", opt)
-end
-
 M.nvimtree = function()
     map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 end
@@ -42,11 +37,6 @@ M.trouble = function()
     map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opt)
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opt)
     map("n", "gR", "<cmd>Trouble lsp_references<cr>", opt)
-end
-
-M.hop = function()
-    map("n", "s", ":HopChar2<CR>", {silent = true})
-    map("n", "S", ":HopWord<CR>", {silent = true})
 end
 
 return M

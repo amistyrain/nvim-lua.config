@@ -39,6 +39,7 @@ o.guicursor =
 -- Colorscheme
 -----------------------------------------------------------
 o.termguicolors = true -- enable 24-bit RGB colors
+o.background = "dark" -- or "light" for light mode
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------

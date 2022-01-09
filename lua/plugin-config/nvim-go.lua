@@ -20,13 +20,13 @@ require("go").setup(
         gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile","/var/log/gopls.log" }
         fillstruct = "gopls", -- can be nil (use fillstruct, slower) and gopls
         lsp_diag_hdlr = false, -- hook lsp diag handler
-        dap_debug = false, -- set to false to disable dap
+        dap_debug = true, -- set to false to disable dap
         textobjects = true, -- enable default text jobects through treesittter-text-objects
         test_runner = "go", -- richgo, go test, richgo, dlv, ginkgo
         run_in_floaterm = false, -- set to true to run in float window.
         --float term recommand if you use richgo/ginkgo with terminal color
         dap_debug_keymap = false, -- set keymaps for debugger
-        dap_debug_gui = false, -- set to true to enable dap gui, highly recommand
+        dap_debug_gui = true, -- set to true to enable dap gui, highly recommand
         dap_debug_vt = false, -- set to true to enable dap virtual text
         build_tags = "tag1,tag2" -- set default build tags
     }

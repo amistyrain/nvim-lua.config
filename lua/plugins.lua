@@ -232,13 +232,9 @@ packer.startup(
         }
 
         use {
-            "terrortylor/nvim-comment",
-            event = {"BufReadPre", "BufNewFile"},
+            "numToStr/Comment.nvim",
             config = function()
-                require("nvim_comment").setup()
-            end,
-            setup = function()
-                require("plugin-map").comment_nvim()
+                require("Comment").setup()
             end
         }
 
@@ -255,30 +251,23 @@ packer.startup(
         }
 
         use {
-            "blackCauldron7/surround.nvim",
-            event = {"BufRead", "BufNewFile"},
-            config = function()
-                require "surround".setup {}
-            end
-        }
-
-        use {
-            "phaazon/hop.nvim",
-            as = "hop",
+            "ggandor/lightspeed.nvim",
             event = "BufReadPre",
-            setup = function()
-                require("plugin-map").hop()
-            end,
             config = function()
-                -- you can configure Hop the way you like here; see :h hop-config
-                require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
+                require "plugin-config.lightspeed"
             end
         }
 
+        -- use {
+        --     "fatih/molokai",
+        --     event = "VimEnter",
+        --     config = [[vim.cmd('colorscheme molokai')]]
+        -- }
+
         use {
-            "fatih/molokai",
+            "ellisonleao/gruvbox.nvim",
             event = "VimEnter",
-            config = [[vim.cmd('colorscheme molokai')]]
+            config = [[vim.cmd('colorscheme gruvbox')]]
         }
 
         use {
@@ -287,6 +276,11 @@ packer.startup(
             config = function()
                 require "plugin-config.nvim-go"
             end
+        }
+
+        use {
+            "rcarriga/nvim-dap-ui",
+            requires = {"mfussenegger/nvim-dap"}
         }
     end
 )
