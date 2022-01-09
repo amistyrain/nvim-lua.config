@@ -282,8 +282,11 @@ packer.startup(
         }
 
         use {
-            "fatih/vim-go",
-            event = "VimEnter"
+            "ray-x/go.nvim",
+            event = "VimEnter",
+            config = function()
+                require "plugin-config.nvim-go"
+            end
         }
     end
 )
