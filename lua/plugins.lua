@@ -258,12 +258,6 @@ packer.startup(
             end
         }
 
-        -- use {
-        --     "fatih/molokai",
-        --     event = "VimEnter",
-        --     config = [[vim.cmd('colorscheme molokai')]]
-        -- }
-
         use {
             "ellisonleao/gruvbox.nvim",
             event = "VimEnter",
@@ -275,12 +269,11 @@ packer.startup(
             event = "VimEnter",
             config = function()
                 require "plugin-config.nvim-go"
-            end
-        }
-
-        use {
-            "rcarriga/nvim-dap-ui",
-            requires = {"mfussenegger/nvim-dap"}
+            end,
+            requires = {
+                "ray-x/guihua.lua",
+                run = "cd lua/fzy && make"
+            }
         }
     end
 )

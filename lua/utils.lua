@@ -1,7 +1,7 @@
 vim.cmd [[packadd nvim-lspconfig]]
-vim.cmd([[
-    autocmd BufWritePre *.go lua goimports(100)
-]])
+-- vim.cmd([[
+--     autocmd BufWritePre *.go lua goimports(100)
+-- ]])
 
 function goimports(timeout_ms)
     local context = {only = {"source.organizeImports"}}
