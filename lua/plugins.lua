@@ -154,7 +154,7 @@ packer.startup(
         }
 
         use {
-            "famiu/feline.nvim",
+            "feline-nvim/feline.nvim",
             after = "nvim-gps",
             config = function()
                 require "plugin-config.feline"
@@ -233,6 +233,7 @@ packer.startup(
 
         use {
             "numToStr/Comment.nvim",
+            event = "BufReadPre",
             config = function()
                 require("Comment").setup()
             end
@@ -240,7 +241,6 @@ packer.startup(
 
         use {
             "liuchengxu/vista.vim",
-            disable = true,
             event = {"BufRead", "BufNewFile"},
             config = function()
                 require "plugin-config.vista"

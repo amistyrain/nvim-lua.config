@@ -5,7 +5,6 @@ if not (present1 or present2) then
     return
 end
 
-autopairs.setup()
-
+autopairs.setup({fast_wrap = {}})
 local cmp = require "cmp"
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
