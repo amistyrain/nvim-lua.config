@@ -208,10 +208,10 @@ packer.startup(
         }
 
         use {
-            "glepnir/dashboard-nvim",
+            'goolord/alpha-nvim',
             event = "BufWinEnter",
             config = function()
-                require "plugin-config.dashboard"
+                require("plugin-config.alpha")
             end
         }
 
