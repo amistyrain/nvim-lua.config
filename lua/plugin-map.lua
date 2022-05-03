@@ -2,14 +2,14 @@ local M = {}
 local cmd = vim.cmd
 
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true, silent = true}
+    local options = { noremap = true, silent = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
-local opt = {noremap = true, silent = true}
+local opt = { noremap = true, silent = true }
 
 M.nvimtree = function()
     map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
@@ -36,6 +36,21 @@ M.trouble = function()
     map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opt)
     map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opt)
     map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opt)
+end
+
+M.dap = function()
+    map("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opt)
+    map("n", "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", opt)
+    map("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opt)
+    map("n", "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", opt)
+    map("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", opt)
+    map("n", "<leader>dg", "<cmd>lua require'dap'.session()<cr>", opt)
+    map("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opt)
+    map("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opt)
+    map("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", opt)
+    map("n", "<leader>dp", "<cmd>lua require'dap'.pause.toggle()<cr>", opt)
+    map("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opt)
+    map("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opt)
 end
 
 return M

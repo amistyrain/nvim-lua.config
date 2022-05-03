@@ -127,8 +127,8 @@ components.active[1][2] = {
 -- filename
 components.active[1][3] = {
     provider = function()
-        -- return vim.fn.expand("%:F")
-        return vim.fn.expand("%:t")
+        return vim.fn.expand("%:F")
+        -- return vim.fn.expand("%:t")
     end,
     hl = {
         fg = "white",

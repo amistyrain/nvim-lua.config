@@ -29,12 +29,31 @@ o.hlsearch = true
 o.undofile = true
 o.undodir = CACHE_PATH .. "/undo" -- set an undo directory
 o.cmdheight = 1
+opt.showtabline = 0
+opt.backupcopy = 'yes'
+opt.undolevels = 1000
+opt.shortmess:append { c = true, S = true }
+opt.showmode = false
+opt.hidden = true
+opt.splitright = true
+opt.splitbelow = true
+opt.wrapscan = true
+opt.backup = false
+opt.writebackup = false
+opt.showcmd = true
+opt.showmatch = true
+opt.ignorecase = true
+opt.hlsearch = true
+opt.smartcase = true
+opt.errorbells = false
+opt.joinspaces = false
+opt.title = true
+opt.lazyredraw = true
 opt.signcolumn = "yes"
-opt.fillchars = {eob = " "}
+opt.fillchars = { eob = " " }
 o.encoding = "utf-8"
 o.scrolloff = 8
-o.guicursor =
-    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 -----------------------------------------------------------
 -- Colorscheme
 -----------------------------------------------------------
@@ -50,9 +69,10 @@ o.smartindent = true -- autoindent new lines
 --------------------------------------
 -- gui
 --------------------------------------
-o.guifont = "Hack Nerd Font Mono:h17"
+o.guifont = "Hack Nerd Font Mono:h14"
 --------------------------------------
 o.completeopt = "menuone,noselect"
+
 -- disable builtin vim plugins
 local disabled_built_ins = {
     "netrw",

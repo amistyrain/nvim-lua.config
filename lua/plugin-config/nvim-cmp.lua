@@ -4,7 +4,7 @@ if not present then
     return
 end
 
--- vim.opt.completeopt = "menuone,noselect"
+-- vim.opt.completeopt = "menuo8ne,noselect"
 
 -- nvim-cmp setup
 cmp.setup {
@@ -16,11 +16,9 @@ cmp.setup {
     formatting = {
         format = function(entry, vim_item)
             -- load lspkind icons
-            vim_item.kind =
-                string.format("%s %s", require("plugin-config.lsp-icons").icons[vim_item.kind], vim_item.kind)
+            vim_item.kind = string.format("%s %s", require("plugin-config.lsp-icons").icons[vim_item.kind], vim_item.kind)
 
-            vim_item.menu =
-                ({
+            vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
                 buffer = "[BUF]"
@@ -60,10 +58,29 @@ cmp.setup {
         end
     },
     sources = {
-        {name = "nvim_lsp"},
-        {name = "luasnip"},
-        {name = "buffer"},
-        {name = "nvim_lua"},
-        {name = "path"}
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "treesitter" },
     }
 }
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
