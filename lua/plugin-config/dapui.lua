@@ -1,7 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-
 -- 如果开启或关闭调试，则自动打开或关闭调试界面
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()

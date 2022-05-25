@@ -36,284 +36,284 @@ packer.init {
 
 packer.startup(
     function()
-    -- Packer can manage itself
-    use {
-        "wbthomason/packer.nvim"
-    }
+        -- Packer can manage itself
+        use {
+            "wbthomason/packer.nvim"
+        }
 
-    use {
-        "neovim/nvim-lspconfig",
-        event = "BufReadPre",
-        config = function()
-            require "plugin-config.lsp"
-        end
-    }
+        use {
+            "neovim/nvim-lspconfig",
+            event = "BufReadPre",
+            config = function()
+                require "plugin-config.lsp"
+            end
+        }
 
-    use {
-        "williamboman/nvim-lsp-installer",
-        after = "nvim-lspconfig",
-        config = function()
-            require "plugin-config.lsp-servers"
-        end
-    }
+        use {
+            "williamboman/nvim-lsp-installer",
+            after = "nvim-lspconfig",
+            config = function()
+                require "plugin-config.lsp-servers"
+            end
+        }
 
-    use {
-        "rafamadriz/friendly-snippets",
-        event = "InsertEnter"
-    }
+        use {
+            "rafamadriz/friendly-snippets",
+            event = "InsertEnter"
+        }
 
-    use {
-        "hrsh7th/nvim-cmp",
-        after = "friendly-snippets",
-        config = function()
-            require "plugin-config.nvim-cmp"
-        end
-    }
+        use {
+            "hrsh7th/nvim-cmp",
+            after = "friendly-snippets",
+            config = function()
+                require "plugin-config.nvim-cmp"
+            end
+        }
 
-    use {
-        "L3MON4D3/LuaSnip",
-        wants = "friendly-snippets",
-        after = "nvim-cmp",
-        config = function()
-            require "plugin-config.luasnip"
-        end
-    }
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
+                require "plugin-config.luasnip"
+            end
+        }
 
-    use {
-        "saadparwaiz1/cmp_luasnip",
-        after = "LuaSnip"
-    }
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            after = "LuaSnip"
+        }
 
-    use {
-        "hrsh7th/cmp-nvim-lua",
-        after = "cmp_luasnip"
-    }
+        use {
+            "hrsh7th/cmp-nvim-lua",
+            after = "cmp_luasnip"
+        }
 
-    use {
-        "hrsh7th/cmp-nvim-lsp",
-        after = "cmp-nvim-lua"
-    }
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            after = "cmp-nvim-lua"
+        }
 
-    use {
-        "hrsh7th/cmp-buffer",
-        after = "cmp-nvim-lsp"
-    }
+        use {
+            "hrsh7th/cmp-buffer",
+            after = "cmp-nvim-lsp"
+        }
 
-    use {
-        "hrsh7th/cmp-path",
-        after = "cmp-buffer"
-    }
+        use {
+            "hrsh7th/cmp-path",
+            after = "cmp-buffer"
+        }
 
-    use {
-        'hrsh7th/cmp-cmdline',
-        wants = "nvim-cmp",
-    }
+        use {
+            'hrsh7th/cmp-cmdline',
+            after = "nvim-cmp",
+        }
 
-    use {
-        'ray-x/cmp-treesitter',
-        after = "nvim-cmp",
-    }
-    --------------------------------------
+        use {
+            'ray-x/cmp-treesitter',
+            after = "nvim-cmp",
+        }
+        --------------------------------------
 
-    use {
-        "kyazdani42/nvim-web-devicons"
-    }
+        use {
+            "kyazdani42/nvim-web-devicons"
+        }
 
-    use {
-        "lewis6991/gitsigns.nvim",
-        after = "plenary.nvim",
-        event = "BufRead",
-        config = function()
-            require "plugin-config.gitsigns"
-        end
-    }
+        use {
+            "lewis6991/gitsigns.nvim",
+            after = "plenary.nvim",
+            event = "BufRead",
+            config = function()
+                require "plugin-config.gitsigns"
+            end
+        }
 
-    use {
-        "folke/trouble.nvim",
-        event = "BufRead",
-        config = function()
-            require "plugin-config.trouble"
-        end,
-        setup = function()
-            require("plugin-map").trouble()
-        end
-    }
+        use {
+            "folke/trouble.nvim",
+            event = "BufRead",
+            config = function()
+                require "plugin-config.trouble"
+            end,
+            setup = function()
+                require("plugin-map").trouble()
+            end
+        }
 
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = function()
-            require "plugin-config.treesitter"
-        end
-    }
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+            config = function()
+                require "plugin-config.treesitter"
+            end
+        }
 
-    use {
-        "onsails/lspkind-nvim",
-        event = "InsertEnter",
-        config = function()
-            require("lspkind").init()
-        end
-    }
+        use {
+            "onsails/lspkind-nvim",
+            event = "InsertEnter",
+            config = function()
+                require("lspkind").init()
+            end
+        }
 
-    use {
-        "SmiteshP/nvim-gps",
-        after = "nvim-web-devicons",
-        config = function()
-            require "plugin-config.nvim-gps"
-        end
-    }
+        use {
+            "SmiteshP/nvim-gps",
+            after = "nvim-web-devicons",
+            config = function()
+                require "plugin-config.nvim-gps"
+            end
+        }
 
-    use {
-        "feline-nvim/feline.nvim",
-        after = "nvim-gps",
-        config = function()
-            require "plugin-config.feline"
-        end
-    }
+        use {
+            "feline-nvim/feline.nvim",
+            after = "nvim-gps",
+            config = function()
+                require "plugin-config.feline"
+            end
+        }
 
-    use {
-        "nvim-lua/plenary.nvim"
-    }
+        use {
+            "nvim-lua/plenary.nvim"
+        }
 
-    use {
-        "nvim-lua/popup.nvim",
-        after = "plenary.nvim"
-    }
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim"
+        }
 
-    use {
-        "nvim-telescope/telescope.nvim",
-        config = function()
-            require "plugin-config.telescope"
-        end,
-        setup = function()
-            require("plugin-map").telescope()
-        end
-    }
+        use {
+            "nvim-telescope/telescope.nvim",
+            config = function()
+                require "plugin-config.telescope"
+            end,
+            setup = function()
+                require("plugin-map").telescope()
+            end
+        }
 
-    use {
-        "kyazdani42/nvim-tree.lua",
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        config = function()
-            require "plugin-config.nvim-tree"
-        end,
-        setup = function()
-            require("plugin-map").nvimtree()
-        end
-    }
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+            config = function()
+                require "plugin-config.nvim-tree"
+            end,
+            setup = function()
+                require("plugin-map").nvimtree()
+            end
+        }
 
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require "plugin-config.indent-blankline"
-        end,
-        event = { "BufReadPre", "BufNewFile" }
-    }
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            config = function()
+                require "plugin-config.indent-blankline"
+            end,
+            event = { "BufReadPre", "BufNewFile" }
+        }
 
-    use {
-        "ray-x/lsp_signature.nvim",
-        after = "nvim-lspconfig",
-        config = function()
-            require("plugin-config.lsp-sign")
-        end
-    }
+        use {
+            "ray-x/lsp_signature.nvim",
+            after = "nvim-lspconfig",
+            config = function()
+                require("plugin-config.lsp-sign")
+            end
+        }
 
-    use {
-        "goolord/alpha-nvim",
-        event = "BufWinEnter",
-        config = function()
-            require("plugin-config.alpha")
-        end
-    }
+        use {
+            "goolord/alpha-nvim",
+            event = "BufWinEnter",
+            config = function()
+                require("plugin-config.alpha")
+            end
+        }
 
-    use {
-        "folke/which-key.nvim",
-        event = "BufWinEnter",
-        config = function()
-            require("which-key").setup {}
-        end
-    }
+        use {
+            "folke/which-key.nvim",
+            event = "BufWinEnter",
+            config = function()
+                require("which-key").setup {}
+            end
+        }
 
-    use {
-        "windwp/nvim-autopairs",
-        after = "nvim-cmp",
-        config = function()
-            require "plugin-config.autopairs"
-        end
-    }
+        use {
+            "windwp/nvim-autopairs",
+            after = "nvim-cmp",
+            config = function()
+                require "plugin-config.autopairs"
+            end
+        }
 
-    use {
-        "numToStr/Comment.nvim",
-        event = "BufReadPre",
-        config = function()
-            require("Comment").setup()
-        end
-    }
+        use {
+            "numToStr/Comment.nvim",
+            event = "BufReadPre",
+            config = function()
+                require("Comment").setup()
+            end
+        }
 
-    use {
-        "liuchengxu/vista.vim",
-        event = { "BufRead", "BufNewFile" },
-        config = function()
-            require "plugin-config.vista"
-        end,
-        setup = function()
-            require("plugin-map").vista()
-        end
-    }
+        -- use {
+        --     "liuchengxu/vista.vim",
+        --     event = { "BufRead", "BufNewFile" },
+        --     config = function()
+        --         require "plugin-config.vista"
+        --     end,
+        --     setup = function()
+        --         require("plugin-map").vista()
+        --     end
+        -- }
 
-    use {
-        "ggandor/lightspeed.nvim",
-        event = "BufReadPre",
-        config = function()
-            require "plugin-config.lightspeed"
-        end
-    }
+        use {
+            "ggandor/lightspeed.nvim",
+            event = "BufReadPre",
+            config = function()
+                require "plugin-config.lightspeed"
+            end
+        }
 
-    use {
-        "ellisonleao/gruvbox.nvim",
-        -- event = "VimEnter",
-        config = [[vim.cmd('colorscheme gruvbox')]]
-    }
+        use {
+            "ellisonleao/gruvbox.nvim",
+            event = "VimEnter",
+            config = [[vim.cmd('colorscheme gruvbox')]]
+        }
 
-    use {
-        "rcarriga/nvim-dap-ui",
-        config = function()
-            require "plugin-config.dapui"
-        end,
-        wants = "nvim-dap"
+        use {
+            "rcarriga/nvim-dap-ui",
+            config = function()
+                require "plugin-config.dapui"
+            end,
+            wants = "nvim-dap"
 
-    }
-    use {
-        "mfussenegger/nvim-dap",
-        config = function()
-            require "plugin-config.dap"
-        end,
-        setup = function()
-            require("plugin-map").dap()
-        end
-    }
+        }
+        use {
+            "mfussenegger/nvim-dap",
+            config = function()
+                require "plugin-config.dap"
+            end,
+            setup = function()
+                require("plugin-map").dap()
+            end
+        }
 
-    -- use {
-    --     "ray-x/go.nvim",
-    --     -- event = "VimEnter",
-    --     config = function()
-    --         require "plugin-config.nvim-go"
-    --     end,
-    --     requires = {
-    --         "ray-x/guihua.lua",
-    --         run = "cd lua/fzy && make"
-    --     }
-    -- }
+        -- use {
+        --     "ray-x/go.nvim",
+        --     -- event = "VimEnter",
+        --     config = function()
+        --         require "plugin-config.nvim-go"
+        --     end,
+        --     requires = {
+        --         "ray-x/guihua.lua",
+        --         run = "cd lua/fzy && make"
+        --     }
+        -- }
 
-    use {
-        "fatih/vim-go",
-        run = ":GoUpdateBinaries",
-        config = function()
-            require "plugin-config.vim-go"
-        end
-    }
+        use {
+            "fatih/vim-go",
+            run = ":GoUpdateBinaries",
+            config = function()
+                require "plugin-config.vim-go"
+            end
+        }
 
-    use {
-        'lewis6991/impatient.nvim',
-    }
-end
+        use {
+            'lewis6991/impatient.nvim',
+        }
+    end
 )

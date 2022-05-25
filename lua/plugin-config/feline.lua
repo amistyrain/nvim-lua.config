@@ -9,8 +9,8 @@ local force_inactive = {
 }
 
 local components = {
-    active = {{}, {}, {}},
-    inactive = {{}, {}, {}}
+    active = { {}, {}, {} },
+    inactive = { {}, {}, {} }
 }
 
 local colors = {
