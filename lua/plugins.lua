@@ -157,7 +157,6 @@ packer.startup(
 
         use {
             "SmiteshP/nvim-gps",
-            after = "nvim-web-devicons",
             config = function()
                 require "plugin-config.nvim-gps"
             end
@@ -249,16 +248,17 @@ packer.startup(
             end
         }
 
-        -- use {
-        --     "liuchengxu/vista.vim",
-        --     event = { "BufRead", "BufNewFile" },
-        --     config = function()
-        --         require "plugin-config.vista"
-        --     end,
-        --     setup = function()
-        --         require("plugin-map").vista()
-        --     end
-        -- }
+        use {
+            "liuchengxu/vista.vim",
+            disable = true,
+            event = { "BufRead", "BufNewFile" },
+            config = function()
+                require "plugin-config.vista"
+            end,
+            setup = function()
+                require("plugin-map").vista()
+            end
+        }
 
         use {
             "ggandor/lightspeed.nvim",
@@ -270,27 +270,26 @@ packer.startup(
 
         use {
             "ellisonleao/gruvbox.nvim",
-            event = "VimEnter",
             config = [[vim.cmd('colorscheme gruvbox')]]
         }
 
-        use {
-            "rcarriga/nvim-dap-ui",
-            config = function()
-                require "plugin-config.dapui"
-            end,
-            wants = "nvim-dap"
+        -- use {
+        --     "rcarriga/nvim-dap-ui",
+        --     config = function()
+        --         require "plugin-config.dapui"
+        --     end,
+        --     wants = "nvim-dap"
+        -- }
 
-        }
-        use {
-            "mfussenegger/nvim-dap",
-            config = function()
-                require "plugin-config.dap"
-            end,
-            setup = function()
-                require("plugin-map").dap()
-            end
-        }
+        -- use {
+        --     "mfussenegger/nvim-dap",
+        --     config = function()
+        --         require "plugin-config.dap"
+        --     end,
+        --     setup = function()
+        --         require("plugin-map").dap()
+        --     end
+        -- }
 
         -- use {
         --     "ray-x/go.nvim",

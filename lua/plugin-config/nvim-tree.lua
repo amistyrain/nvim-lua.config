@@ -1,20 +1,6 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
-vim.g.nvim_tree_auto_ignore_ft = "dashboard"
-vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = { unstaged = "", staged = "✓", unmerged = "", renamed = "➜", untracked = "" },
-    folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" }
-}
-vim.g.nvim_tree_highlight_opened_files = 0
-vim.g.nvim_tree_show_icons = {
-    folders = 1,
-    files = 1,
-    git = 0
-}
-
 require "nvim-tree".setup {
     ignore_ft_on_setup = { "dashboard" },
     auto_reload_on_write = true,
@@ -46,6 +32,11 @@ require "nvim-tree".setup {
         ignore_list = {}
     },
     renderer = {
+        add_trailing = false,
+        group_empty = false,
+        highlight_git = false,
+        highlight_opened_files = "none",
+        root_folder_modifier = ":~",
         indent_markers = {
             enable = true,
             icons = {
@@ -54,6 +45,42 @@ require "nvim-tree".setup {
                 none = "  ",
             },
         },
+        icons = {
+            webdev_colors = true,
+            git_placement = "before",
+            padding = " ",
+            symlink_arrow = " ➛ ",
+            show = {
+                file = true,
+                folder = true,
+                folder_arrow = true,
+                git = false,
+            },
+            glyphs = {
+                default = "",
+                symlink = "",
+                folder = {
+                    arrow_closed = "",
+                    arrow_open = "",
+                    default = "",
+                    open = "",
+                    empty = "",
+                    empty_open = "",
+                    symlink = "",
+                    symlink_open = "",
+                },
+                git = {
+                    unstaged = "✗",
+                    staged = "✓",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                    deleted = "",
+                    ignored = "◌",
+                },
+            },
+        },
+        special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
     },
     system_open = {
         cmd = nil,
