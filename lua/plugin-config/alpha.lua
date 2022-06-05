@@ -73,7 +73,7 @@ local section = {
 
 alpha.setup {
     layout = {
-        { type = "padding", val = 1 },
+        { type = "padding", val = 4 },
         section.header,
         { type = "padding", val = 2 },
         section.buttons,

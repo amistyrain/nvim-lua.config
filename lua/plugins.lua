@@ -43,7 +43,6 @@ packer.startup(
 
         use {
             "neovim/nvim-lspconfig",
-            event = "BufReadPre",
             config = function()
                 require "plugin-config.lsp"
             end
@@ -164,7 +163,6 @@ packer.startup(
 
         use {
             "feline-nvim/feline.nvim",
-            after = "nvim-gps",
             config = function()
                 require "plugin-config.feline"
             end
