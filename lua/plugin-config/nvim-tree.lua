@@ -2,7 +2,7 @@
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
 require "nvim-tree".setup {
-    ignore_ft_on_setup = { "dashboard" },
+    ignore_ft_on_setup = { "dashboard", "alpha" },
     auto_reload_on_write = true,
     disable_netrw = false,
     hijack_cursor = true,
@@ -15,7 +15,7 @@ require "nvim-tree".setup {
     sort_by = "name",
     hijack_directories = {
         enable = true,
-        auto_open = true
+        auto_open = false
     },
     diagnostics = {
         enable = false,
@@ -27,7 +27,7 @@ require "nvim-tree".setup {
         }
     },
     update_focused_file = {
-        enable = true,
+        enable = false,
         update_cwd = false,
         ignore_list = {}
     },
@@ -35,7 +35,7 @@ require "nvim-tree".setup {
         add_trailing = false,
         group_empty = false,
         highlight_git = false,
-        highlight_opened_files = "none",
+        highlight_opened_files = "all",
         root_folder_modifier = ":~",
         indent_markers = {
             enable = true,
@@ -88,19 +88,21 @@ require "nvim-tree".setup {
     },
     filters = {
         dotfiles = false,
-        custom = { ".git", ".idea", ".cache", ".DS_Store", ".vscode" }
+        custom = { ".git", ".idea", ".DS_Store", ".vscode" }
     },
     git = {
         enable = true,
         ignore = true,
+        show_on_dirs = true,
         timeout = 500
     },
     view = {
+        adaptive_size = false,
+        centralize_selection = false,
         width = 30,
-        height = 30,
         hide_root_folder = false,
         side = "left",
-        preserve_window_proportions = true,
+        preserve_window_proportions = false,
         number = false,
         relativenumber = false,
         signcolumn = "yes",
@@ -108,6 +110,17 @@ require "nvim-tree".setup {
             custom_only = false,
             list = {
                 -- user mappings go here
+            },
+        },
+        float = {
+            enable = false,
+            open_win_config = {
+                relative = "editor",
+                border = "rounded",
+                width = 30,
+                height = 30,
+                row = 1,
+                col = 1,
             },
         },
     },

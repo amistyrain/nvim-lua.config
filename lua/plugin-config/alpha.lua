@@ -38,7 +38,6 @@ local buttons = {
     type = "group",
     val = {
         { type = "text", val = "Quick links", opts = { hl = "Constant", position = "center" } },
-        -- { type = "padding", val = 1 },
         dashboard.button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
         dashboard.button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
         dashboard.button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
@@ -82,7 +81,6 @@ alpha.setup {
     },
     opts = {
         position = "center",
-        -- margin = 5,
         setup = function()
             vim.cmd([[
             autocmd alpha_temp DirChanged * lua require('alpha').redraw()

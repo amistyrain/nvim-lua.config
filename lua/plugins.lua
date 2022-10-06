@@ -49,8 +49,14 @@ packer.startup(
         }
 
         use {
-            "williamboman/nvim-lsp-installer",
-            after = "nvim-lspconfig",
+            "williamboman/mason.nvim",
+            config = function()
+                require("mason").setup()
+            end
+        }
+
+        use {
+            "williamboman/mason-lspconfig.nvim",
             config = function()
                 require "plugin-config.lsp-servers"
             end
@@ -112,6 +118,10 @@ packer.startup(
             'ray-x/cmp-treesitter',
             after = "nvim-cmp",
         }
+        use {
+            "hrsh7th/cmp-calc",
+            after = "nvim-cmp",
+        }
         --------------------------------------
 
         use {
@@ -155,16 +165,20 @@ packer.startup(
         }
 
         use {
-            "SmiteshP/nvim-gps",
+            "SmiteshP/nvim-navic",
             config = function()
-                require "plugin-config.nvim-gps"
+                require "plugin-config.nvim-navic"
             end
         }
 
         use {
             "feline-nvim/feline.nvim",
             config = function()
-                require "plugin-config.feline"
+                if vim.fn.has "nvim-0.8" == 1 then
+                    require "plugin-config.feline-winbar"
+                else
+                    require "plugin-config.feline"
+                end
             end
         }
 
@@ -268,41 +282,44 @@ packer.startup(
 
         use {
             "ellisonleao/gruvbox.nvim",
-            config = [[vim.cmd('colorscheme gruvbox')]]
+            config = function()
+                vim.o.background = "dark" -- or "light" for light mode
+                vim.cmd([[colorscheme gruvbox]])
+            end
         }
 
-        -- use {
-        --     "rcarriga/nvim-dap-ui",
-        --     config = function()
-        --         require "plugin-config.dapui"
-        --     end,
-        --     wants = "nvim-dap"
-        -- }
+        use {
+            "rcarriga/nvim-dap-ui",
+            config = function()
+                require "plugin-config.dapui"
+            end,
+            wants = "nvim-dap"
+        }
 
-        -- use {
-        --     "mfussenegger/nvim-dap",
-        --     config = function()
-        --         require "plugin-config.dap"
-        --     end,
-        --     setup = function()
-        --         require("plugin-map").dap()
-        --     end
-        -- }
+        use {
+            "mfussenegger/nvim-dap",
+            config = function()
+                require "plugin-config.dap"
+            end,
+            setup = function()
+                require("plugin-map").dap()
+            end
+        }
 
-        -- use {
-        --     "ray-x/go.nvim",
-        --     -- event = "VimEnter",
-        --     config = function()
-        --         require "plugin-config.nvim-go"
-        --     end,
-        --     requires = {
-        --         "ray-x/guihua.lua",
-        --         run = "cd lua/fzy && make"
-        --     }
-        -- }
+        use {
+            "ray-x/go.nvim",
+            config = function()
+                require "plugin-config.nvim-go"
+            end,
+            requires = {
+                "ray-x/guihua.lua",
+                run = "cd lua/fzy && make"
+            }
+        }
 
         use {
             "fatih/vim-go",
+            disable = true,
             run = ":GoUpdateBinaries",
             config = function()
                 require "plugin-config.vim-go"
@@ -312,5 +329,19 @@ packer.startup(
         use {
             'lewis6991/impatient.nvim',
         }
+
+        use {
+            'rcarriga/nvim-notify',
+        }
+
+        -- Packer
+        use {
+            'sindrets/diffview.nvim',
+            requires = 'nvim-lua/plenary.nvim',
+            setup = function()
+                require("plugin-map").diffview()
+            end
+        }
+
     end
 )

@@ -72,10 +72,10 @@ o.smartindent = true -- autoindent new lines
 o.guifont = "Hack Nerd Font Mono:h14"
 --------------------------------------
 o.completeopt = "menuone,noselect"
-
-
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
+-- neovide
+--------------------------------------
+g.neovide_fullscreen = true
+--------------------------------------
 
 -- disable builtin vim plugins
 local disabled_built_ins = {

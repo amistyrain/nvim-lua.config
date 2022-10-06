@@ -6,3 +6,4 @@ else
 end
 require("settings")
 require("keymappings")
+require("autocmds")

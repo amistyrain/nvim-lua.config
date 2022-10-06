@@ -27,7 +27,7 @@ M.telescope = function()
 end
 
 M.vista = function()
-    map("n", "<Leader>v", ":<C-u>Vista!!<CR>", opt)
+    -- map("n", "<Leader>k", ":<C-u>Vista!!<CR>", opt)
 end
 
 M.trouble = function()
@@ -51,6 +51,13 @@ M.dap = function()
     map("n", "<leader>dp", "<cmd>lua require'dap'.pause.toggle()<cr>", opt)
     map("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opt)
     map("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opt)
+end
+
+M.diffview = function()
+    map("n", "<leader>vo", "<cmd>DiffviewOpen<cr>", opt)
+    map("n", "<leader>vq", "<cmd>DiffviewClose<cr>", opt)
+    map("n", "<leader>vb", "<cmd>DiffviewOpen origin/master..HEAD<cr>", opt)
+    map("n", "<leader>vh", "<cmd>DiffviewFileHistory<cr>", opt)
 end
 
 return M

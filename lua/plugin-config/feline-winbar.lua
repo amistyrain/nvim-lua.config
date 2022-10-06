@@ -126,45 +126,8 @@ components.active[1][2] = {
     end,
     right_sep = " "
 }
--- filename
-components.active[1][3] = {
-    provider = function()
-        return vim.fn.expand("%:F")
-        -- return vim.fn.expand("%:t")
-    end,
-    hl = {
-        fg = "white",
-        bg = "bg",
-        style = "bold"
-    },
-    right_sep = {
-        str = " > ",
-        hl = {
-            fg = "white",
-            bg = "bg",
-            style = "bold"
-        }
-    }
-}
--- nvimGps
-components.active[1][4] = {
-    provider = function()
-        return navic.get_location()
-    end,
-    enabled = function()
-        return navic.is_available()
-    end,
-    hl = {
-        fg = "white",
-        bg = "bg",
-        style = "bold"
-    }
-}
-
--- MID
-
 -- gitBranch
-components.active[2][1] = {
+components.active[1][3] = {
     provider = "git_branch",
     hl = {
         fg = "yellow",
@@ -172,8 +135,9 @@ components.active[2][1] = {
         style = "bold"
     }
 }
+-- MID
 -- diffAdd
-components.active[2][2] = {
+components.active[2][1] = {
     provider = "git_diff_added",
     hl = {
         fg = "green",
@@ -182,7 +146,7 @@ components.active[2][2] = {
     }
 }
 -- diffModfified
-components.active[2][3] = {
+components.active[2][2] = {
     provider = "git_diff_changed",
     hl = {
         fg = "orange",
@@ -191,7 +155,7 @@ components.active[2][3] = {
     }
 }
 -- diffRemove
-components.active[2][4] = {
+components.active[2][3] = {
     provider = "git_diff_removed",
     hl = {
         fg = "red",
@@ -200,7 +164,7 @@ components.active[2][4] = {
     }
 }
 -- diagnosticErrors
-components.active[2][5] = {
+components.active[2][4] = {
     provider = "diagnostic_errors",
     enabled = function()
         return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
@@ -211,7 +175,7 @@ components.active[2][5] = {
     }
 }
 -- diagnosticWarn
-components.active[2][6] = {
+components.active[2][5] = {
     provider = "diagnostic_warnings",
     enabled = function()
         return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
@@ -222,7 +186,7 @@ components.active[2][6] = {
     }
 }
 -- diagnosticHint
-components.active[2][7] = {
+components.active[2][6] = {
     provider = "diagnostic_hints",
     enabled = function()
         return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
@@ -233,7 +197,7 @@ components.active[2][7] = {
     }
 }
 -- diagnosticInfo
-components.active[2][8] = {
+components.active[2][7] = {
     provider = "diagnostic_info",
     enabled = function()
         return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
@@ -245,7 +209,6 @@ components.active[2][8] = {
 }
 
 -- RIGHT
-
 -- fileIcon
 components.active[3][1] = {
     provider = function()
@@ -337,18 +300,7 @@ components.active[3][6] = {
     },
     right_sep = " "
 }
--- rubyVersion
--- components.active[3][7] = {
---     provider = function()
---         return " " .. vim.fn["rvm#string"]()
---     end,
---     hl = {
---         fg = "red",
---         bg = "bg",
---         style = "bold"
---     },
---     right_sep = " "
--- }
+
 -- lineInfo
 components.active[3][8] = {
     provider = "position",
@@ -414,6 +366,56 @@ require("feline").setup(
         default_fg = fg,
         vi_mode_colors = vi_mode_colors,
         components = components,
+        force_inactive = force_inactive
+    }
+)
+
+local winbar = {
+    active = { {}, {}, {} },
+}
+
+table.insert(winbar.active[1], {
+    provider = function()
+        return vim.fn.expand("%:F")
+        -- return vim.fn.expand("%:t")
+    end,
+    hl = {
+        fg = "white",
+        bg = "bg",
+        style = "bold"
+    },
+    right_sep = {
+        str = " > ",
+        hl = {
+            fg = "white",
+            bg = "bg",
+            style = "bold"
+        }
+    },
+    left_sep = {
+        str = " -> ",
+        hl = {
+            fg = "white",
+            bg = "bg",
+            style = "bold"
+        }
+    }
+})
+
+table.insert(winbar.active[1], {
+    provider = function()
+        return navic.get_location()
+    end,
+    enabled = function() return navic.is_available() end,
+})
+
+require("feline").winbar.setup(
+    {
+        theme = colors,
+        default_bg = bg,
+        default_fg = fg,
+        vi_mode_colors = vi_mode_colors,
+        components = winbar,
         force_inactive = force_inactive
     }
 )
