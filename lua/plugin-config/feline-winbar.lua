@@ -111,9 +111,18 @@ components.active[1][1] = {
     end,
     right_sep = " "
 }
-
--- vi-symbol
+-- scrollBar
 components.active[1][2] = {
+    provider = "scroll_bar",
+    hl = {
+        fg = "yellow",
+        bg = "bg",
+        style = "bold"
+    },
+    right_sep = " "
+}
+-- vi-symbol
+components.active[1][3] = {
     provider = function()
         return vi_mode_text[vi_mode_utils.get_vim_mode()]
     end,
@@ -127,7 +136,7 @@ components.active[1][2] = {
     right_sep = " "
 }
 -- gitBranch
-components.active[1][3] = {
+components.active[1][4] = {
     provider = "git_branch",
     hl = {
         fg = "yellow",
@@ -302,7 +311,7 @@ components.active[3][6] = {
 }
 
 -- lineInfo
-components.active[3][8] = {
+components.active[3][7] = {
     provider = "position",
     hl = {
         fg = "white",
@@ -312,7 +321,7 @@ components.active[3][8] = {
     right_sep = " "
 }
 -- linePercent
-components.active[3][9] = {
+components.active[3][8] = {
     provider = "line_percentage",
     hl = {
         fg = "white",
@@ -320,14 +329,6 @@ components.active[3][9] = {
         style = "bold"
     },
     right_sep = " "
-}
--- scrollBar
-components.active[3][10] = {
-    provider = "scroll_bar",
-    hl = {
-        fg = "yellow",
-        bg = "bg"
-    }
 }
 
 -- INACTIVE

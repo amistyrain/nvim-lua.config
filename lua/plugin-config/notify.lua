@@ -17,4 +17,3 @@ notify.setup({
     -- end,
     timeout = 3000,
 })
-vim.notify = notify

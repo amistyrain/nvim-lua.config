@@ -2,16 +2,11 @@
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
 require "nvim-tree".setup {
-    ignore_ft_on_setup = { "dashboard", "alpha" },
     auto_reload_on_write = true,
     disable_netrw = false,
     hijack_cursor = true,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = false,
-    open_on_setup = true,
-    open_on_setup_file = false,
-    open_on_tab = false,
     sort_by = "name",
     hijack_directories = {
         enable = true,

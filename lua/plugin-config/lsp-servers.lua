@@ -17,7 +17,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 local navic = require("nvim-navic")
 local nvim_lsp = require("lspconfig")
-local mason_lsp = require("mason-lspconfig")
+
 
 local function custom_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -54,10 +54,11 @@ local function custom_attach(client, bufnr)
     end
 end
 
+
+local mason_lsp = require("mason-lspconfig")
 mason_lsp.setup({
     ensure_installed = {
         "bashls",
-        "pyright",
         "gopls",
         "yamlls",
         "intelephense",

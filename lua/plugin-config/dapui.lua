@@ -5,14 +5,14 @@ local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-    dap.repl.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-    dap.repl.close()
-end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--     dapui.close()
+--     dap.repl.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--     dapui.close()
+--     dap.repl.close()
+-- end
 
 -- 显示或隐藏调试界面
 -- vim.keybinds.gmap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", vim.keybinds.opts)
@@ -27,6 +27,21 @@ dapui.setup({
         edit = "e",
         repl = "r",
         toggle = "t",
+    },
+    controls = {
+        element = "repl",
+        enabled = true,
+        icons = {
+            disconnect = "",
+            pause = "",
+            play = "",
+            run_last = "",
+            step_back = "",
+            step_into = "",
+            step_out = "",
+            step_over = "",
+            terminate = ""
+        }
     },
     -- Expand lines larger than the window
     -- Requires >= 0.7

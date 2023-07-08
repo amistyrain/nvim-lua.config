@@ -50,6 +50,7 @@ packer.startup(
 
         use {
             "williamboman/mason.nvim",
+            before = "williamboman/mason.nvim",
             config = function()
                 require("mason").setup()
             end
@@ -57,6 +58,7 @@ packer.startup(
 
         use {
             "williamboman/mason-lspconfig.nvim",
+
             config = function()
                 require "plugin-config.lsp-servers"
             end
@@ -187,6 +189,20 @@ packer.startup(
         }
 
         use {
+            "max397574/better-escape.nvim",
+            config = function()
+                require("better_escape").setup()
+            end,
+        }
+
+        use {
+            'stevearc/aerial.nvim',
+            config = function()
+                require('aerial').setup()
+            end
+        }
+
+        use {
             "nvim-lua/popup.nvim",
             after = "plenary.nvim"
         }
@@ -198,6 +214,23 @@ packer.startup(
             end,
             setup = function()
                 require("plugin-map").telescope()
+            end
+        }
+
+        use {
+            "ahmedkhalf/project.nvim",
+            config = function()
+                require("project_nvim").setup {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                    sync_root_with_cwd = true,
+                    respect_buf_cwd = true,
+                    update_focused_file = {
+                        enable = true,
+                        update_root = true
+                    },
+                }
             end
         }
 
@@ -261,18 +294,6 @@ packer.startup(
         }
 
         use {
-            "liuchengxu/vista.vim",
-            disable = true,
-            event = { "BufRead", "BufNewFile" },
-            config = function()
-                require "plugin-config.vista"
-            end,
-            setup = function()
-                require("plugin-map").vista()
-            end
-        }
-
-        use {
             "ggandor/lightspeed.nvim",
             event = "BufReadPre",
             config = function()
@@ -305,6 +326,27 @@ packer.startup(
                 require("plugin-map").dap()
             end
         }
+        -- Packer
+        use({
+            "jackMort/ChatGPT.nvim",
+            config = function()
+                require("chatgpt").setup({
+                    -- optional configuration
+                })
+            end,
+            requires = {
+                "MunifTanjim/nui.nvim",
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim"
+            }
+        })
+
+        use {
+            'leoluz/nvim-dap-go',
+            config = function()
+                require('plugin-config.dap-go')
+            end
+        }
 
         use {
             "ray-x/go.nvim",
@@ -327,10 +369,6 @@ packer.startup(
         }
 
         use {
-            'lewis6991/impatient.nvim',
-        }
-
-        use {
             'rcarriga/nvim-notify',
         }
 
@@ -342,6 +380,5 @@ packer.startup(
                 require("plugin-map").diffview()
             end
         }
-
     end
 )

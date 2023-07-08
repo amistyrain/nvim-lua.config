@@ -38,9 +38,9 @@ local buttons = {
     type = "group",
     val = {
         { type = "text", val = "Quick links", opts = { hl = "Constant", position = "center" } },
-        dashboard.button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
-        dashboard.button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
-        dashboard.button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
+        dashboard.button("SPC f f", "󰈞  Find File  ", ":Telescope find_files<CR>"),
+        dashboard.button("SPC f o", "󰷊  Recent File  ", ":Telescope oldfiles<CR>"),
+        dashboard.button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
         dashboard.button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
         dashboard.button("SPC p y", "  Sync plugins", ":PackerSync<CR>"),
         dashboard.button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>")
@@ -54,7 +54,7 @@ local function footer()
     local total_plugins = #vim.tbl_keys(packer_plugins)
     local date = os.date("%Y-%m-%d")
     local time = os.date("%H:%M:%S")
-    return "[ " .. total_plugins .. " plugins] [ " .. date .. "] [ " .. time .. "]"
+    return "[ " .. total_plugins .. " plugins] [ " .. date .. "] [ " .. time .. "]"
 end
 
 local footers = {
