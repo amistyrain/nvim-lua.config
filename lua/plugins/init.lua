@@ -32,7 +32,8 @@ return {
 
     {
         "hrsh7th/nvim-cmp",
-        event = { "InsertEnter", "CmdlineEnter" },
+        -- event = { "InsertEnter", "CmdlineEnter" },
+        event = { "InsertEnter", },
         dependencies = {
             {
                 -- snippet plugin
@@ -55,6 +56,10 @@ return {
             },
             {
                 "windwp/nvim-autopairs",
+                opts = {
+                    fast_wrap = {},
+                    disable_filetype = { "TelescopePrompt", "vim" },
+                },
                 config = function(_, opts)
                     require("nvim-autopairs").setup(opts)
                     -- setup cmp for autopairs
@@ -91,6 +96,21 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
+        cmd = {
+            "TSBufDisable",
+            "TSBufEnable",
+            "TSBufToggle",
+            "TSDisable",
+            "TSEnable",
+            "TSToggle",
+            "TSInstall",
+            "TSInstallInfo",
+            "TSInstallSync",
+            "TSModuleInfo",
+            "TSUninstall",
+            "TSUpdate",
+            "TSUpdateSync",
+        },
         build = ":TSUpdate",
         config = function()
             require "plugin-config.treesitter"
@@ -151,6 +171,9 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
         config = function()
             require "plugin-config.telescope"
         end,
@@ -237,27 +260,27 @@ return {
         end
     },
 
-    {
-        "mfussenegger/nvim-dap",
-        dependencies = {
-            {
-                "jay-babu/mason-nvim-dap.nvim",
-                dependencies = { "nvim-dap" },
-                cmd = { "DapInstall", "DapUninstall" },
-                opts = { handlers = {} },
-            },
-            {
-                "rcarriga/nvim-dap-ui",
-                opts = { floating = { border = "rounded" } },
-                config = require "plugin-config.dapui",
-            },
-            {
-                "rcarriga/cmp-dap",
-                dependencies = { "nvim-cmp" },
-                config = require "plugin-config.cmp-dap",
-            },
-        },
-    },
+    -- {
+    --     "mfussenegger/nvim-dap",
+    --     dependencies = {
+    --         {
+    --             "jay-babu/mason-nvim-dap.nvim",
+    --             dependencies = { "nvim-dap" },
+    --             cmd = { "DapInstall", "DapUninstall" },
+    --             opts = { handlers = {} },
+    --         },
+    --         {
+    --             "rcarriga/nvim-dap-ui",
+    --             opts = { floating = { border = "rounded" } },
+    --             config = require "plugin-config.dapui",
+    --         },
+    --         {
+    --             "rcarriga/cmp-dap",
+    --             dependencies = { "nvim-cmp" },
+    --             config = require "plugin-config.cmp-dap",
+    --         },
+    --     },
+    -- },
 
     {
         "ray-x/go.nvim",
