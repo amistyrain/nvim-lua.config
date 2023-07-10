@@ -53,7 +53,7 @@ opt.smartcase = true
 opt.errorbells = false
 opt.joinspaces = false
 opt.title = true
-opt.lazyredraw = true
+opt.lazyredraw = false
 opt.signcolumn = "yes"
 opt.fillchars = { eob = " " }
 o.encoding = "utf-8"
