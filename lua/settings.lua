@@ -35,7 +35,7 @@ opt.showtabline = 0
 opt.backupcopy = 'yes'
 opt.laststatus = 3
 opt.undolevels = 1000
-opt.shortmess:append { c = true, S = true }
+opt.shortmess:append { c = true, S = false }
 opt.showmode = false
 opt.hidden = true
 opt.splitright = true

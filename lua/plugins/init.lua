@@ -178,7 +178,11 @@ return {
         'stevearc/aerial.nvim',
         config = function()
             require('aerial').setup()
-        end
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
     },
 
     {
@@ -326,6 +330,9 @@ return {
 
     {
         "folke/noice.nvim",
+        config = function()
+            require "plugin-config.noice"
+        end,
         event = "VeryLazy",
         opts = {
             -- add any options here
