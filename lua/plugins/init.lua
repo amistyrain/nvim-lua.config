@@ -25,6 +25,9 @@ return {
 
     {
         "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+        },
         config = function()
             require "plugin-config.lsp-servers"
         end
@@ -74,7 +77,7 @@ return {
     },
 
     {
-        "kyazdani42/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons"
     },
 
     {
@@ -115,6 +118,19 @@ return {
         config = function()
             require "plugin-config.treesitter"
         end
+    },
+
+    {
+        'nvimdev/lspsaga.nvim',
+        event = 'LspAttach',
+        ft = { 'c', 'cpp', 'lua', 'rust', 'go' },
+        config = function()
+            require('lspsaga').setup({})
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+        }
     },
 
     {
@@ -171,6 +187,7 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
@@ -222,7 +239,7 @@ return {
         "goolord/alpha-nvim",
         event = "VimEnter",
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         config = function()
             require("plugin-config.alpha")
@@ -231,6 +248,7 @@ return {
 
     {
         "folke/which-key.nvim",
+        keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
         event = "VeryLazy",
         init = function()
             vim.o.timeout = true
@@ -240,6 +258,14 @@ return {
 
     {
         "numToStr/Comment.nvim",
+        keys = {
+            { "gcc", mode = "n",          desc = "Comment toggle current line" },
+            { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+            { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+            { "gbc", mode = "n",          desc = "Comment toggle current block" },
+            { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+            { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
+        },
         config = function()
             require("Comment").setup()
         end
@@ -254,6 +280,7 @@ return {
 
     {
         "ellisonleao/gruvbox.nvim",
+        priority = 1000,
         config = function()
             vim.o.background = "dark" -- or "light" for light mode
             vim.cmd([[colorscheme gruvbox]])

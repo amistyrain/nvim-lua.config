@@ -52,10 +52,10 @@ local buttons = {
 
 local function footer()
     local stats = require("lazy").stats()
-    local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+    -- local ms = math.floor(stats.startuptime * 100 + 0.5) / 100   [ in " .. ms .. "ms]
     local date = os.date("%Y-%m-%d")
     local time = os.date("%H:%M:%S")
-    return "[ " .. stats.count .. " plugins] [ in " .. ms .. "ms] [ " .. date .. "] [ " .. time .. "]"
+    return "[ " .. stats.count .. " plugins] [ " .. date .. "] [ " .. time .. "]"
 end
 
 local footers = {
