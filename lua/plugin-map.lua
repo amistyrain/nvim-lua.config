@@ -26,10 +26,6 @@ M.telescope = function()
     map("n", "<leader>gc", ":Telescope git_commits <CR>", opt)
 end
 
-M.vista = function()
-    -- map("n", "<Leader>k", ":<C-u>Vista!!<CR>", opt)
-end
-
 M.trouble = function()
     map("n", "<leader>xx", "<cmd>Trouble<cr>", opt)
     map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opt)
