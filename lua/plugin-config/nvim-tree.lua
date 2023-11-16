@@ -92,23 +92,18 @@ require "nvim-tree".setup {
         timeout = 500
     },
     view = {
-        adaptive_size = false,
         centralize_selection = false,
-        width = 30,
-        hide_root_folder = false,
+        cursorline = true,
+        debounce_delay = 15,
         side = "left",
         preserve_window_proportions = false,
         number = false,
         relativenumber = false,
         signcolumn = "yes",
-        mappings = {
-            custom_only = false,
-            list = {
-                -- user mappings go here
-            },
-        },
+        width = 30,
         float = {
             enable = false,
+            quit_on_focus_loss = true,
             open_win_config = {
                 relative = "editor",
                 border = "rounded",

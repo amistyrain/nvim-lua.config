@@ -28,7 +28,15 @@ require("go").setup(
         gopls_remote_auto = true, -- add -remote=auto to gopls
         gopls_cmd = nil,          -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile","/var/log/gopls.log" }
         fillstruct = "gopls",     -- can be nil (use fillstruct, slower) and gopls
-        lsp_diag_hdlr = false,    -- hook lsp diag handler
+        diagnostic = {            -- set diagnostic to false to disable vim.diagnostic setup
+            -- in go.nvim
+            hdlr = false,         -- hook lsp diag handler and send diag to quickfix
+            underline = true,
+            -- virtual text setup
+            virtual_text = { spacing = 0, prefix = '■' },
+            signs = true,
+            update_in_insert = false,
+        },
         dap_debug = true,         -- set to false to disable dap
         textobjects = true,       -- enable default text jobects through treesittter-text-objects
         test_runner = "go",       -- richgo, go test, richgo, dlv, ginkgo
